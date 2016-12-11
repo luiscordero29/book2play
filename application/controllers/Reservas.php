@@ -81,10 +81,11 @@ class Reservas extends CI_Controller {
 		
 		$data['fecha'] = $this->input->post('hoy');
 
-		$this->form_validation->set_rules('hoy', '', 'required|callback_check_seleccion_fechas_1|callback_check_seleccion_fechas_2');	
+		$this->form_validation->set_rules('hoy', '', 'required|callback_check_seleccion_fechas_1|callback_check_seleccion_fechas_2|callback_check_seleccion_fechas_3|callback_check_seleccion_fechas_4');	
 		$this->form_validation->set_message('check_seleccion_fechas_1', 'Debe escoger un bloque de horario');
 		$this->form_validation->set_message('check_seleccion_fechas_2', 'Ha superado el numero de reservas por día');
-
+		$this->form_validation->set_message('check_seleccion_fechas_3', 'Error en fecha, debes reservar con de antealción');
+		$this->form_validation->set_message('check_seleccion_fechas_4', 'La fecha de reservación debe ser superior o igual a: '.$this->Reservas_model->check_seleccion_fechas_4_fecha());
 		$data['res_instalaciones_table'] = $this->Reservas_model->res_instalaciones_table();
 		$data['row'] = $this->Reservas_model->read();
 		$data['hoy'] = $this->Reservas_model->date_to_2($this->input->post('fecha'));
@@ -151,6 +152,16 @@ class Reservas extends CI_Controller {
   	public function check_seleccion_fechas_2()
   	{
       	return $this->Reservas_model->check_seleccion_fechas_2();
+  	}
+
+  	public function check_seleccion_fechas_3()
+  	{
+      	return $this->Reservas_model->check_seleccion_fechas_3();
+  	}
+
+  	public function check_seleccion_fechas_4()
+  	{
+      	return $this->Reservas_model->check_seleccion_fechas_4();
   	}
 
 }

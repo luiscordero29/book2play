@@ -42,6 +42,25 @@ Class Reservas_model extends CI_MODEL
 
 	}
 
+	function read_get($rin_id)
+	{			    
+
+	    $rco_id = $this->rco_id();
+
+		$this->db->join('comunidades','comunidades.rco_id=instalaciones.rco_id','left');
+	    $query = $this->db->get_where('instalaciones', array('instalaciones.rin_id' => $rin_id, 'comunidades.rco_id' => $rco_id));	    
+
+	    if($query->num_rows() > 0)
+	    {	      
+	      	return $query->row_array();
+	    }
+	    else
+	    {
+	      	return false;
+	    }
+
+	}
+
 	function res_instalaciones($rin_id)
 	{		
 	    $this->db->order_by('rop_hora_inicio', 'ASC');
@@ -67,10 +86,6 @@ Class Reservas_model extends CI_MODEL
 
 	function disponible($rop_id,$rop_fecha)
 	{
-		$date_array = explode('/',$rop_fecha);
-		$date_array = array_reverse($date_array);		
-		$rop_fecha 		= date(implode('-', $date_array));
-
 	    $this->db->where('rre_fecha', $rop_fecha);
 	    $this->db->where('rop_id', $rop_id);
 		$query = $this->db->get('reservas');
@@ -82,6 +97,22 @@ Class Reservas_model extends CI_MODEL
 	    else
 	    {
 	      	return true;
+	    }
+	}
+
+	function disponible_usuario($rop_id,$rop_fecha)
+	{
+	    $rcl_id = $this->rcl_id();
+
+	    $this->db->where('rcl_id', $rcl_id);
+	    $this->db->where('rre_fecha', $rop_fecha);
+	    $this->db->where('rop_id', $rop_id);
+		$query = $this->db->get('reservas');
+	    
+	    if($query->num_rows() > 0){	      
+	      	return true;
+	    }else{
+	      	return false;
 	    }
 	}
 
@@ -127,20 +158,7 @@ Class Reservas_model extends CI_MODEL
 		if (empty($rop_id)) {
 			return false;
 		}else{
-			
-			/*$item = 0;
-			foreach ($horario as $key => $value) {
-				$item++;
-			}
-
-			if ($item>0) {
-				return true;
-			}else{
-				return false;
-			}*/
-
 			return true;
-
 		}
 	}
 
@@ -157,7 +175,7 @@ Class Reservas_model extends CI_MODEL
 
 			$date_array = explode('/',$rop_fecha);
 			$date_array = array_reverse($date_array);		
-			$rop_fecha 		= date(implode('-', $date_array));
+			$rop_fecha 	= date(implode('-', $date_array));
 			
 			$item = 1;
 
@@ -172,6 +190,51 @@ Class Reservas_model extends CI_MODEL
 				return false;
 			}
 		}
+	}
+
+	function check_seleccion_fechas_3()
+	{
+		$rop_fecha = $this->input->post('hoy');
+		$hoy = date("Y-m-d");
+
+		if (date($hoy) <= date($rop_fecha)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function check_seleccion_fechas_4()
+	{
+		$hoy = $this->date_to_2($this->input->post('hoy'));
+		$rin_id = $this->input->post('rin_id');
+		
+		$row = $this->read_get($rin_id);
+		$date = date('Y-m-d');
+
+		$date = new DateTime($date);
+        $date->modify('+'.$row['rin_antelacion'].' day');
+        $date = $date->format('Y-m-d');
+
+		if (date($hoy) >= date($date)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function check_seleccion_fechas_4_fecha()
+	{
+		$rin_id = $this->input->post('rin_id');
+		
+		$row = $this->read_get($rin_id);
+		
+		$date = date('Y-m-d');
+		$date = new DateTime($date);
+        $date->modify('+'.$row['rin_antelacion'].' day');
+        $date = $date->format('d/m/Y');
+		
+		return $date;
 	}
 
 	function res_instalaciones_table()
@@ -234,7 +297,7 @@ Class Reservas_model extends CI_MODEL
 	function hora($date)
 	{
 		$date = new DateTime($date);
-        $date = $date->format('H:m');
+        $date = $date->format('H:i');
 		return $date;
 	}
 

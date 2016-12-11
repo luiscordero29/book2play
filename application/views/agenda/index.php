@@ -47,12 +47,12 @@
                               <tr>
                                 <td>
                                   <?php                                    
-                                    echo $r['rre_fecha'];
+                                    echo $this->Agenda_model->date_to_1($r['rre_fecha']);
                                   ?>                                                 
                                 </td>
                                 <td>
                                   <?php                                    
-                                    echo $r['rop_hora_inicio'] .' - '.$r['rop_hora_fin'];
+                                    echo $this->Agenda_model->hora($r['rop_hora_inicio']) .' - '.$this->Agenda_model->hora($r['rop_hora_fin']);
                                   ?>                                                 
                                 </td>
                                 <td>
@@ -67,9 +67,9 @@
                                   <b>Duración:</b>
                                   <?php echo $r['rin_duracion']; ?><br />
                                   <b>Hora Inicio:</b>
-                                  <?php echo $r['rin_hora_inicio']; ?><br />
+                                  <?php echo $this->Agenda_model->hora($r['rin_hora_inicio']); ?><br />
                                   <b>Hora Fin:</b>
-                                  <?php echo $r['rin_hora_fin']; ?><br />
+                                  <?php echo $this->Agenda_model->hora($r['rin_hora_fin']); ?><br />
                                   <b>Días de Antelación:</b>
                                   <?php echo $r['rin_antelacion']; ?><br />
                                   <b>Horas de Anulación:</b>

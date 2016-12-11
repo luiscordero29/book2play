@@ -134,4 +134,26 @@ Class Agenda_model extends CI_MODEL
 		return $data['rcl_id'];
 	}
 	
+	function hora($date)
+	{
+		$date = new DateTime($date);
+        $date = $date->format('H:i');
+		return $date;
+	}
+
+	function date_to_1($date)
+	{
+		$date_array = explode('-',$date);
+        $date_array = array_reverse($date_array);   
+        $date    = date(implode('/', $date_array));
+		return $date;
+	}
+
+	function date_to_2($date)
+	{
+		$date_array = explode('/',$date);
+        $date_array = array_reverse($date_array);   
+        $date    = date(implode('-', $date_array));
+		return $date;
+	}
 }

@@ -86,7 +86,11 @@
                             <hr>
                             <?php }else{  ?>  
                             <?php echo $this->Reservas_model->hora($hora['rop_hora_inicio']) .' - '.$this->Reservas_model->hora($hora['rop_hora_fin']); ?> 
+                            <?php if ($this->Reservas_model->disponible_usuario($hora['rop_id'], $hoy )): ?>
+                            <button class="btn btn-info btn-xs">OCUPADO</button><br />
+                            <?php else: ?>
                             <button class="btn btn-danger btn-xs">OCUPADO</button><br />
+                            <?php endif ?>
                             <?php echo $this->Reservas_model->cliente($hora['rop_id']); ?>
                             <hr>
                         <?php 

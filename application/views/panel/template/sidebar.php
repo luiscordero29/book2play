@@ -89,7 +89,7 @@
                       <li class="sub-menu">
                           <a href="<?php echo site_url('agenda/index'); ?>" >
                               <i class="fa fa-book"></i>
-                              <span>Agenda</span>
+                              <span>Mis Reservas</span>
                           </a>
                       </li>
                       <?php
