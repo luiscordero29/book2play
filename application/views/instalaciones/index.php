@@ -68,7 +68,7 @@
                                   <?php 
                                     $horas = $this->Instalaciones_model->res_instalaciones($r['rin_id']);
                                     foreach ($horas as $hora) {
-                                      echo $hora['rop_hora_inicio'] .' - '.$hora['rop_hora_fin'] . '<br />';
+                                      echo $this->Instalaciones_model->hora($hora['rop_hora_inicio']) .' - '.$this->Instalaciones_model->hora($hora['rop_hora_fin']) . '<br />';
                                     } 
                                   ?>                                                 
                                 </td>
@@ -90,6 +90,7 @@
                                   
                                   <div class="btn-group">
                                     <a title="Visualizar" href="<?php echo site_url($this->controller.'/view/'.$r['rin_id']); ?>" class="btn btn-default"><i class="fa fa-eye"></i></a>
+                                    <a title="Horario" href="<?php echo site_url($this->controller.'/clock/'.$r['rin_id']); ?>" class="btn btn-info"><i class="fa fa-clock-o"></i></a>
                                     <a title="Editar" href="<?php echo site_url($this->controller.'/update/'.$r['rin_id']); ?>" class="btn btn-info"><i class="fa fa-edit"></i></a>
                                     <a title="Borrar" onclick="return confirm('¿Desea eliminar el registro?')" href="<?php echo site_url($this->controller.'/delete/'.$r['rin_id']); ?>" class="btn btn-danger"><i class="fa fa-remove"></i></a>
                                   </div>

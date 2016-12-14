@@ -183,15 +183,100 @@ Class Instalaciones_model extends CI_MODEL
 	    	$rin_nombre 		= $this->input->post('rin_nombre');
 		   	$rin_activo 		= $this->input->post('rin_activo');
 		   	$rin_numero 		= $this->input->post('rin_numero');
+		   	$rin_antelacion 	= $this->input->post('rin_antelacion');
+		   	$rin_anulacion 		= $this->input->post('rin_anulacion');
 
 		   	$data = array(
 			   'rin_nombre' 		=> $rin_nombre,
 			   'rin_activo' 		=> $rin_activo,
 			   'rin_numero' 		=> $rin_numero,
+			   'rin_antelacion' 	=> $rin_antelacion,
+			   'rin_anulacion' 		=> $rin_anulacion,
 			);
 			
 	      	$this->db->where('rin_id', $rin_id);
 			$this->db->update('instalaciones', $data); 
+
+	      	return true;
+
+	    }
+	    else
+	    {
+	      	return false;
+	    }
+	} 
+
+	function clock()
+	{
+	    
+	    $rin_id = $this->input->post('rin_id');
+	    
+		$query = $this->db->get_where('instalaciones', array('rin_id' => $rin_id));	    
+
+	    if($query->num_rows() > 0)
+	    {	      	      	
+
+	    	$rin_tipo 			= $this->input->post('rin_tipo');
+		   	$rin_duracion 		= $this->input->post('rin_duracion');
+		   	$rin_hora_inicio 	= $this->input->post('rin_hora_inicio');
+		   	$rin_hora_fin 		= $this->input->post('rin_hora_fin');
+
+		   	$data = array(
+			   'rin_tipo' 			=> $rin_tipo,
+			   'rin_duracion' 		=> $rin_duracion,
+			   'rin_hora_inicio' 	=> $rin_hora_inicio,
+			   'rin_hora_fin' 		=> $rin_hora_fin,
+			);
+			
+	      	$this->db->where('rin_id', $rin_id);
+			$this->db->update('instalaciones', $data); 
+
+			# delete horario
+			$this->db->where('rin_id', $rin_id);
+			$this->db->delete('opciones'); 
+
+			# create horario
+	      	switch ($rin_tipo) {
+		    	case 'DIA':
+		    		# Registro por Dia
+		    		$data = array(				   
+					   'rop_hora_inicio' 	=> $rin_hora_inicio,
+					   'rop_hora_fin' 		=> $rin_hora_fin,				   
+					   'rin_id' 			=> $rin_id,
+					);
+					$this->db->insert('opciones', $data);	    		
+		    		break;
+		    	case 'HORAS':
+		    		$minutos = intval($rin_duracion*60);
+					$hora_inicio = $rin_hora_inicio;
+					$hora_fin = date('H:i:s', strtotime ( "+$minutos minute" , strtotime ( $hora_inicio ) ) );
+					while (strtotime($hora_inicio) < strtotime($rin_hora_fin)){				   	
+					   	$data = array(				   
+						   'rop_hora_inicio' 	=> $hora_inicio,
+						   'rop_hora_fin' 		=> $hora_fin,				   
+						   'rin_id' 			=> $rin_id,
+						);
+						$this->db->insert('opciones', $data);					
+						$hora_inicio = date('H:i:s', strtotime ( "+$minutos minute" , strtotime ( $hora_inicio ) ) );
+					   	$hora_fin = date('H:i:s', strtotime ( "+$minutos minute" , strtotime ( $hora_fin ) ) ) ;
+					} 
+		    		break;
+		    	case 'MINUTOS':
+		    		$minutos = intval($rin_duracion);
+					$hora_inicio = $rin_hora_inicio;
+					$hora_fin = date('H:i:s', strtotime ( "+$minutos minute" , strtotime ( $hora_inicio ) ) );
+					while (strtotime($hora_inicio) < strtotime($rin_hora_fin)){				   	
+					   	$data = array(				   
+						   'rop_hora_inicio' 	=> $hora_inicio,
+						   'rop_hora_fin' 		=> $hora_fin,				   
+						   'rin_id' 			=> $rin_id,
+						);
+						$this->db->insert('opciones', $data);					
+						$hora_inicio = date('H:i:s', strtotime ( "+$minutos minute" , strtotime ( $hora_inicio ) ) );
+					   	$hora_fin = date('H:i:s', strtotime ( "+$minutos minute" , strtotime ( $hora_fin ) ) );
+					} 
+		    		break;
+		    }
 
 	      	return true;
 	    }
@@ -291,6 +376,12 @@ Class Instalaciones_model extends CI_MODEL
 		return $data['rco_id'];
 	}
 
+	function hora($date)
+	{
+		$date = new DateTime($date);
+        $date = $date->format('H:i');
+		return $date;
+	}
 
 	
 }
