@@ -46,7 +46,6 @@
                               </div>
                               <div class="col-lg-2">
                                 <input type="hidden" name="rco_id" value="<?php echo $row['rco_id']; ?>">
-                                <input type="hidden" name="rin_id" value="<?php echo $row['rin_id']; ?>">
                                 <input type="hidden" name="rin_antelacion" value="<?php echo $row['rin_antelacion']; ?>">
                                 <button type="submit" class="btn btn-primary">Consultar</button>
                               </div>

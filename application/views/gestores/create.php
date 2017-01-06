@@ -26,7 +26,7 @@
                           <div class="form-group">
                               <label for="rus_usuario" class="col-sm-2 col-sm-2 control-label">Usuario</label>
                               <div class="col-sm-10">
-                                <input type="text" name="rus_usuario" class="form-control" id="rus_usuario" placeholder="Usuario" required="" autofocus="">
+                                <input type="text" name="rus_usuario" class="form-control" id="rus_usuario" placeholder="Usuario" required="" autofocus="" value="<?php echo set_value('rus_usuario'); ?>">
                               </div>
                           </div>
                           <div class="form-group">
@@ -38,7 +38,7 @@
                           <div class="form-group">
                               <label for="rus_correo" class="col-sm-2 col-sm-2 control-label">Correo</label>
                               <div class="col-sm-10">
-                                  <input type="email" class="form-control" name="rus_correo" id="rus_correo" placeholder="Correo" required="" maxlength="255"  >
+                                  <input type="email" class="form-control" name="rus_correo" id="rus_correo" placeholder="Correo" required="" maxlength="255" value="<?php echo set_value('rus_correo'); ?>">
                               </div>
                           </div>
                           <div class="form-group">
@@ -46,8 +46,8 @@
                               <div class="col-sm-10">
                                   <select name="rus_activo" id="rus_activo" class="form-control" required>
                                     <option value="">SELECCIONE</option>
-                                    <option value="SI">SI</option>
-                                    <option value="NO">NO</option>
+                                    <option value="SI" <?php if (set_value('rus_activo')=='SI'): ?>selected<?php endif ?>>SI</option>
+                                    <option value="NO" <?php if (set_value('rus_activo')=='NO'): ?>selected<?php endif ?>>NO</option>
                                   </select>      
                               </div>
                           </div>     
@@ -55,19 +55,19 @@
                           <div class="form-group">
                               <label for="rad_dni" class="col-sm-2 col-sm-2 control-label">DNI</label>
                               <div class="col-sm-10">
-                                <input type="text" name="rad_dni" class="form-control" id="rad_dni" placeholder="DNI" required="">
+                                <input type="text" name="rad_dni" class="form-control" id="rad_dni" placeholder="DNI" required="" value="<?php echo set_value('rad_dni'); ?>">
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="rad_apellidos" class="col-sm-2 col-sm-2 control-label">Apellidos</label>
                               <div class="col-sm-10">
-                                <input type="text" name="rad_apellidos" class="form-control" id="rad_apellidos" placeholder="Apellidos" required="" autofocus="">
+                                <input type="text" name="rad_apellidos" class="form-control" id="rad_apellidos" placeholder="Apellidos" required="" autofocus="" value="<?php echo set_value('rad_apellidos'); ?>">
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="rad_nombres" class="col-sm-2 col-sm-2 control-label">Nombres</label>
                               <div class="col-sm-10">
-                                <input type="text" name="rad_nombres" class="form-control" id="rad_nombres" placeholder="Nombres" required="" autofocus="">
+                                <input type="text" name="rad_nombres" class="form-control" id="rad_nombres" placeholder="Nombres" required="" autofocus="" value="<?php echo set_value('rad_nombres'); ?>">
                               </div>
                           </div>
                           <div class="form-group">

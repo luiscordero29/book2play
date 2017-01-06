@@ -68,7 +68,7 @@
                       <li class="sub-menu">
                           <a href="javascript:;" >
                               <i class="fa fa-users"></i>
-                              <span>Clientes</span>
+                              <span>Usuarios</span>
                           </a>
                           <ul class="sub">
                               <li><a href="<?php echo site_url('clientes/index'); ?>">Listado</a></li>

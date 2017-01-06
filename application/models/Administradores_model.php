@@ -59,7 +59,7 @@ Class Administradores_model extends CI_MODEL
 	    }
 	}
 
-	function data()
+	function create()
 	{
 	   
 	   	$rus_usuario 	= $this->input->post('rus_usuario');
@@ -75,15 +75,6 @@ Class Administradores_model extends CI_MODEL
 		   'rus_correo' 	=> $rus_correo,
 		   'rus_tipo' 		=> $rus_tipo,
 		);
-	    
-	    return $data;
-
-	} 
-
-	function create()
-	{
-	   
-	   	$data = $this->data();
 
 		$this->db->insert('usuarios', $data); 
 	    
@@ -112,7 +103,17 @@ Class Administradores_model extends CI_MODEL
 	    
 	    $rus_id = $this->input->post('rus_id');
 
-	    $data = $this->data();
+	    $rus_usuario 	= $this->input->post('rus_usuario');
+	   	$rus_activo 	= $this->input->post('rus_activo');
+	   	$rus_correo 	= $this->input->post('rus_correo');	 
+	   	$rus_tipo 		= $this->input->post('rus_tipo');	     	
+
+	   	$data = array(
+		   'rus_usuario' 	=> $rus_usuario,
+		   'rus_activo' 	=> $rus_activo,
+		   'rus_correo' 	=> $rus_correo,
+		   'rus_tipo' 		=> $rus_tipo,
+		);
 	    
 		$query = $this->db->get_where('usuarios', array('rus_tipo' => 'ADMIN_GLOBAL', 'rus_id' => $rus_id));	    
 

@@ -9,7 +9,7 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Clientes</h3>
+            <h3><i class="fa fa-angle-right"></i> Usuarios</h3>
             <div class="row mt">
               <div class="col-lg-12">
               
@@ -71,17 +71,17 @@
                                   <?php echo $r['rcl_letra']; ?><br />                                                              
                                 </td>
                                 <td>
-                                  <b>Nombre de la Comunidad:</b>
+                                  <b>Nombre:</b>
                                   <?php echo $r['rco_nombre']; ?><br />
-                                  <b>Dirección de la Comunidad:</b>
+                                  <b>Dirección:</b>
                                   <?php echo $r['rco_direccion']; ?><br />
-                                  <b>Persona de Contacto:</b>
+                                  <b>Contacto:</b>
                                   <?php echo $r['rco_contacto']; ?><br />
                                   <b>Móvil:</b>
                                   <?php echo $r['rco_movil']; ?><br />
-                                  <b>Correo:</b>
+                                  <b>E-mail:</b>
                                   <?php echo $r['rco_correo']; ?><br />
-                                  <b>Número de Vecinos:</b>
+                                  <b>N° de Vecinos:</b>
                                   <?php echo $r['rco_vecinos']; ?><br />                                    
                                 </td>
                                 <td>

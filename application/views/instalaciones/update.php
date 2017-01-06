@@ -24,9 +24,9 @@
                       ?>
                           <h4 class="mb"><i class="fa fa-angle-right"></i> Datos de la Instalación</h4>
                           <div class="form-group">
-                              <label for="rin_nombre" class="col-sm-2 col-sm-2 control-label">Nombre de la Propiedad</label>
+                              <label for="rin_nombre" class="col-sm-2 col-sm-2 control-label">Nombre</label>
                               <div class="col-sm-10">
-                                <input type="text" name="rin_nombre" class="form-control" id="rin_nombre" placeholder="Nombre de la Propiedad" required="" autofocus="" maxlength="250" value="<?php echo $row['rin_nombre']; ?>">
+                                <input type="text" name="rin_nombre" class="form-control" id="rin_nombre" placeholder="Nombre" required="" autofocus="" maxlength="250" value="<?php echo $row['rin_nombre']; ?>">
                               </div>
                           </div>  
                           <div class="form-group">
@@ -40,22 +40,22 @@
                               </div>
                           </div> 
                           <div class="form-group">
-                              <label for="rin_numero" class="col-sm-2 col-sm-2 control-label">Número reservas al día por usuario:</label>
+                              <label for="rin_numero" class="col-sm-2 col-sm-2 control-label">N° reservas al día/usuario:</label>
                               <div class="col-sm-10">
-                                <input type="text" name="rin_numero" class="form-control" id="rin_numero" placeholder="Número reservas al día por usuario" required="" maxlength="4" value="<?php echo $row['rin_numero']; ?>">
+                                <input type="text" name="rin_numero" class="form-control" id="rin_numero" placeholder="N° reservas al día/usuario" required="" maxlength="4" value="<?php echo $row['rin_numero']; ?>">
                               </div>
                           </div> 
                           <h4 class="mb"><i class="fa fa-angle-right"></i> Reglas para la Reserva</h4> 
                           <div class="form-group">
-                              <label for="rin_antelacion" class="col-sm-2 col-sm-2 control-label">Días de Antelación</label>
+                              <label for="rin_antelacion" class="col-sm-2 col-sm-2 control-label">Días para poder reservar</label>
                               <div class="col-sm-10">
-                                <input type="text" name="rin_antelacion" class="form-control" id="rin_antelacion" placeholder="Días de Antelación" required="" value="<?php echo $row['rin_antelacion']; ?>">
+                                <input type="text" name="rin_antelacion" class="form-control" id="rin_antelacion" placeholder="Días para poder reservar" required="" value="<?php echo $row['rin_antelacion']; ?>">
                               </div>
                           </div>
                           <div class="form-group">
-                              <label for="rin_anulacion" class="col-sm-2 col-sm-2 control-label">Horas de Anulación</label>
+                              <label for="rin_anulacion" class="col-sm-2 col-sm-2 control-label">Horas para poder anular</label>
                               <div class="col-sm-10">
-                                <input type="text" name="rin_anulacion" class="form-control" id="rin_anulacion" placeholder="Horas de Anulación" required="" maxlength="4" value="<?php echo $row['rin_anulacion']; ?>">
+                                <input type="text" name="rin_anulacion" class="form-control" id="rin_anulacion" placeholder="Horas para poder anular" required="" maxlength="4" value="<?php echo $row['rin_anulacion']; ?>">
                               </div>
                           </div>                                              
                           <div class="form-group">

@@ -9,11 +9,13 @@ Class Clientes_model extends CI_MODEL
 	function table($limit,$start,$search)
 	{
 
+		$rco_id = $this->rco_id();
+
 	    $sql = 
 	    "SELECT * FROM res_clientes c
 	     LEFT JOIN res_usuarios u ON u.rus_id = c.rus_id 
 	     LEFT JOIN res_comunidades m ON m.rco_id = c.rco_id
-	     WHERE (rus_tipo = 'USUARIO') 
+	     WHERE (m.rco_id = ".$rco_id.") AND (rus_tipo = 'USUARIO') 
 	     AND (
 	     	rus_usuario LIKE '%".$search."%' ESCAPE '!' 
 	     	OR rus_correo LIKE '%".$search."%' ESCAPE '!'
@@ -45,12 +47,13 @@ Class Clientes_model extends CI_MODEL
 
 	function table_rows($search)
 	{
-	    
+	    $rco_id = $this->rco_id();
+
 	    $sql = 
 	    "SELECT * FROM res_clientes c
 	     LEFT JOIN res_usuarios u ON u.rus_id = c.rus_id 
 	     LEFT JOIN res_comunidades m ON m.rco_id = c.rco_id
-	     WHERE (rus_tipo = 'USUARIO') 
+	     WHERE (m.rco_id = ".$rco_id.") AND (rus_tipo = 'USUARIO') 
 	     AND (
 	     	rus_usuario LIKE '%".$search."%' ESCAPE '!' 
 	     	OR rus_correo LIKE '%".$search."%' ESCAPE '!'
@@ -99,11 +102,7 @@ Class Clientes_model extends CI_MODEL
 		$this->db->insert('usuarios', $data); 
 
 		$rus_id = $this->db->insert_id();
-
-		$session_rus_id = $this->session->userdata('rus_id');
-		$query = $this->db->get_where('comunidades', array('rus_id' => $session_rus_id));
-		$data = $query->row_array();
-		$rco_id = $data['rco_id'];
+		$rco_id = rco_id();
 
 		$rcl_dni 		= $this->input->post('rcl_dni');
 	   	$rcl_apellidos 	= $this->input->post('rcl_apellidos');
@@ -179,10 +178,7 @@ Class Clientes_model extends CI_MODEL
 	      	$this->db->where('rus_id', $rus_id);
 			$this->db->update('usuarios', $data); 
 
-			$session_rus_id = $this->session->userdata('rus_id');
-			$query = $this->db->get_where('comunidades', array('rus_id' => $session_rus_id));
-			$data = $query->row_array();
-			$rco_id = $data['rco_id'];
+			$rco_id = rco_id();
 
 			$rcl_dni 		= $this->input->post('rcl_dni');
 		   	$rcl_apellidos 	= $this->input->post('rcl_apellidos');
@@ -230,7 +226,7 @@ Class Clientes_model extends CI_MODEL
 			$this->db->delete('usuarios'); 
 
 			$this->db->where('rus_id', $rus_id);
-			$this->db->delete('administradores'); 
+			$this->db->delete('clientes'); 
 
 	      	return true;
 	    }
@@ -324,6 +320,14 @@ Class Clientes_model extends CI_MODEL
 		else {
 			return true;
 		}
+	}
+
+	function rco_id()
+	{
+		$session_rus_id = $this->session->userdata('rus_id');
+		$query = $this->db->get_where('comunidades', array('rus_id' => $session_rus_id));
+		$data = $query->row_array();
+		return $data['rco_id'];
 	}
 
 }

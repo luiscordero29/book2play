@@ -9,7 +9,7 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Clientes - [Ver]</h3>
+            <h3><i class="fa fa-angle-right"></i> Usuarios - [Ver]</h3>
             <div class="row mt">
               <div class="col-lg-12">
 
@@ -17,8 +17,6 @@
                       <h4 class="mb"><i class="fa fa-angle-right"></i> Datos de Acceso</h4>
                       <div class="box-body">
                         <dl class="dl-horizontal">
-                          <dt>ID:</dt>
-                          <dd><?php echo $row['rus_id']; ?></dd>
                           <dt>Usuario:</dt>
                           <dd><?php echo $row['rus_usuario']; ?></dd>
                           <dt>Correo:</dt>
@@ -32,8 +30,6 @@
                       <h4 class="mb"><i class="fa fa-angle-right"></i> Datos de Gestor</h4>
                       <div class="box-body">
                         <dl class="dl-horizontal">
-                          <dt>ID:</dt>
-                          <dd><?php echo $row['rcl_id']; ?></dd>
                           <dt>DNI:</dt>
                           <dd><?php echo $row['rcl_dni']; ?></dd>
                           <dt>Apellidos:</dt>
@@ -55,8 +51,6 @@
                       <h4 class="mb"><i class="fa fa-angle-right"></i> Datos de la Comunidad</h4>
                       <div class="box-body">
                         <dl class="dl-horizontal">
-                          <dt>ID:</dt>
-                          <dd><?php echo $row['rco_id']; ?></dd>
                           <dt>Comunidad:</dt>
                           <dd><?php echo $row['rco_nombre']; ?></dd>
                           <dt>Dirección:</dt>
@@ -65,9 +59,9 @@
                           <dd><?php echo $row['rco_contacto']; ?></dd>
                           <dt>Móvil:</dt>
                           <dd><?php echo $row['rco_movil']; ?></dd>
-                          <dt>Correo:</dt>
+                          <dt>E-mail:</dt>
                           <dd><?php echo $row['rco_correo']; ?></dd>
-                          <dt>Número de Vecinos:</dt>
+                          <dt>N° Vecinos:</dt>
                           <dd><?php echo $row['rco_vecinos']; ?></dd>
                         </dl>
                       </div>

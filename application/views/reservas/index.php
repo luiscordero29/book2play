@@ -60,7 +60,6 @@
                     $at = array('class' => 'form-horizontal style-form', 'id' => 'FormReservar');
                     echo form_open('reservas/reservar_listar',$at); 
                   ?>
-                  <input type="hidden" name="rin_id" value="<?php echo $rin_id; ?>">
                   <input type="hidden" name="rco_id" value="<?php echo $rco_id; ?>">
                   <input type="hidden" name="rin_numero" value="<?php echo $rin_numero; ?>">
                   <input type="hidden" name="fecha" value="<?php echo $this->Reservas_model->date_to_1($hoy); ?>">

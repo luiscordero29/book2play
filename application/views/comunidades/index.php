@@ -45,17 +45,17 @@
                               ?>
                               <tr>
                                 <td>
-                                  <b>Nombre de la Comunidad:</b>
+                                  <b>Nombre:</b>
                                   <?php echo $r['rco_nombre']; ?><br />
-                                  <b>Dirección de la Comunidad:</b>
+                                  <b>Dirección:</b>
                                   <?php echo $r['rco_direccion']; ?><br />
-                                  <b>Persona de Contacto:</b>
+                                  <b>Contacto:</b>
                                   <?php echo $r['rco_contacto']; ?><br />
                                   <b>Móvil:</b>
                                   <?php echo $r['rco_movil']; ?><br />
-                                  <b>Correo:</b>
+                                  <b>E-mail:</b>
                                   <?php echo $r['rco_correo']; ?><br />
-                                  <b>Número de Vecinos:</b>
+                                  <b>N° Vecinos:</b>
                                   <?php echo $r['rco_vecinos']; ?><br />                                    
                                 </td>
                                 <td>
@@ -78,7 +78,7 @@
                                   <div class="btn-group">
                                     <a title="Visualizar" href="<?php echo site_url($this->controller.'/view/'.$r['rco_id']); ?>" class="btn btn-default"><i class="fa fa-eye"></i></a>
                                     <a title="Editar" href="<?php echo site_url($this->controller.'/update/'.$r['rco_id']); ?>" class="btn btn-info"><i class="fa fa-edit"></i></a>
-                                    <a title="Borrar" onclick="return confirm('¿Desea eliminar el registro?')" href="<?php echo site_url($this->controller.'/delete/'.$r['rco_id']); ?>" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+                                    <a title="Borrar" onclick="return confirm('¿Desea eliminar la Comunidad <?php echo $r['rco_nombre']; ?>?')" href="<?php echo site_url($this->controller.'/delete/'.$r['rco_id']); ?>" class="btn btn-danger"><i class="fa fa-remove"></i></a>
                                   </div>
                                 </td>
                               </tr>

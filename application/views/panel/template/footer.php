@@ -51,8 +51,26 @@
     <script src="<?php echo base_url(); ?>assets/datetimepicker/jquery.datetimepicker.full.min.js"></script>
 
     <!--script for this page-->
+
+    <script src="<?php echo base_url(); ?>assets/maskedinput/jquery.maskedinput.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $.mask.definitions['~'] = "[+-]";
+        $("#rin_hora_inicio").mask("99:99");
+        $("#rin_hora_fin").mask("99:99");
     
-  <script>
+        $("input").blur(function() {
+            $("#info").html("Unmasked value: " + $(this).mask());
+        }).dblclick(function() {
+            $(this).unmask();
+        });
+    });
+  
+    </script> 
+    <script>
+ 
+      ///$("#rin_hora_inicio").inputmask("99:99");  //static mask
+ 
       
       $("button#reservar_action").click(function(){
         

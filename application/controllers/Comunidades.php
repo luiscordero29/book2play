@@ -68,10 +68,10 @@ class Comunidades extends CI_Controller {
 		$this->form_validation->set_rules('rco_nombre', 'Nombre de la Comunidad', 'trim|required');
 		$this->form_validation->set_rules('rco_direccion', 'Dirección de la Comunidad', 'trim|required');
 		$this->form_validation->set_rules('rco_contacto', 'Persona de Contacto', 'trim|required');		
-		$this->form_validation->set_rules('rco_movil', 'Móvil', 'trim|required');
+		$this->form_validation->set_rules('rco_movil', 'Móvil', 'trim|required|is_natural_no_zero');
 		$this->form_validation->set_rules('rco_correo', 'Correo', 'trim|valid_email|required');
 		$this->form_validation->set_rules('rco_vecinos', 'Número de Vecinos', 'trim|required');
-		$this->form_validation->set_rules('rus_id', 'Gestor', 'trim|required');
+		$this->form_validation->set_rules('rus_id', 'Gestor', 'trim|required|integer');
 
 		$data['res_administradores'] = $this->Comunidades_model->res_administradores();
 		
@@ -121,10 +121,10 @@ class Comunidades extends CI_Controller {
 		$this->form_validation->set_rules('rco_nombre', 'Nombre de la Comunidad', 'trim|required');
 		$this->form_validation->set_rules('rco_direccion', 'Dirección de la Comunidad', 'trim|required');
 		$this->form_validation->set_rules('rco_contacto', 'Persona de Contacto', 'trim|required');		
-		$this->form_validation->set_rules('rco_movil', 'Móvil', 'trim|required');
+		$this->form_validation->set_rules('rco_movil', 'Móvil', 'trim|required|is_natural_no_zero');
 		$this->form_validation->set_rules('rco_correo', 'Correo', 'trim|valid_email|required');
 		$this->form_validation->set_rules('rco_vecinos', 'Número de Vecinos', 'trim|required');
-		$this->form_validation->set_rules('rus_id', 'Gestor', 'trim|required');
+		$this->form_validation->set_rules('rus_id', 'Gestor', 'trim|required|integer');
 			
 
 		if($this->form_validation->run() == FALSE)

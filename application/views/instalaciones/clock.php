@@ -24,15 +24,15 @@
                       ?>
                           <h4 class="mb"><i class="fa fa-angle-right"></i> Datos de la Instalación</h4>
                           <div class="form-group">
-                              <label for="rin_nombre" class="col-sm-2 col-sm-2 control-label">Nombre de la Propiedad</label>
+                              <label for="rin_nombre" class="col-sm-2 col-sm-2 control-label">Nombre</label>
                               <div class="col-sm-10">
-                                <input type="text" name="rin_nombre" class="form-control" id="rin_nombre" placeholder="Nombre de la Propiedad" disabled="" maxlength="250" value="<?php echo $row['rin_nombre']; ?>">
+                                <input type="text" name="rin_nombre" class="form-control" id="rin_nombre" placeholder="Nombre" disabled="" maxlength="250" value="<?php echo $row['rin_nombre']; ?>">
                               </div>
                           </div>    
 
                           <h4 class="mb"><i class="fa fa-angle-right"></i> Duración de la Reserva</h4> 
                           <div class="form-group">
-                              <label for="rin_tipo" class="col-sm-2 col-sm-2 control-label">Tipo</label>
+                              <label for="rin_tipo" class="col-sm-2 col-sm-2 control-label">Medida</label>
                               <div class="col-sm-10">
                                   <select name="rin_tipo" id="rin_tipo" class="form-control" required="">
                                     <option value="">SELECCIONE</option>

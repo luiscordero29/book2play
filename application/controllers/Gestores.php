@@ -124,7 +124,6 @@ class Gestores extends CI_Controller {
 	{			
 			
 		$this->form_validation->set_rules('rus_usuario', 'Usuario', 'trim|required|min_length[6]|max_length[15]|alpha_numeric|callback_check_usuario');
-		$this->form_validation->set_rules('rus_clave', 'Clave', 'required');
 		$this->form_validation->set_rules('rus_activo', 'Activo', 'required');
 		$this->form_validation->set_rules('rus_correo', 'Correo', 'trim|valid_email|callback_check_correo');					
 		$this->form_validation->set_rules('rad_dni', 'DNI', 'trim|required|callback_check_dni|callback_vdni');

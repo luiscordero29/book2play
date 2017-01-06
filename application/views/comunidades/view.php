@@ -28,9 +28,9 @@
                           <dd><?php echo $row['rco_contacto']; ?></dd>
                           <dt>Móvil:</dt>
                           <dd><?php echo $row['rco_movil']; ?></dd>
-                          <dt>Correo:</dt>
+                          <dt>E-mail:</dt>
                           <dd><?php echo $row['rco_correo']; ?></dd>
-                          <dt>Número de Vecinos:</dt>
+                          <dt>N° Vecinos:</dt>
                           <dd><?php echo $row['rco_vecinos']; ?></dd>
                         </dl>
                       </div>

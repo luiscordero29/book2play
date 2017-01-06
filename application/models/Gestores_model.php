@@ -134,14 +134,12 @@ Class Gestores_model extends CI_MODEL
 	    {	      	      	
 
 	    	$rus_usuario 	= $this->input->post('rus_usuario');
-		   	$rus_clave 		= MD5($this->input->post('rus_clave'));
 		   	$rus_activo 	= $this->input->post('rus_activo');
 		   	$rus_correo 	= $this->input->post('rus_correo');	 
 		   	$rus_tipo 		= $this->input->post('rus_tipo');	     	
 
 		   	$data = array(
 			   'rus_usuario' 	=> $rus_usuario,
-			   'rus_clave' 		=> $rus_clave,
 			   'rus_activo' 	=> $rus_activo,
 			   'rus_correo' 	=> $rus_correo,
 			   'rus_tipo' 		=> $rus_tipo,

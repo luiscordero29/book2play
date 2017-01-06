@@ -23,21 +23,21 @@
                         echo form_open('',$at); 
                       ?>
                           <div class="form-group">
-                              <label for="rco_nombre" class="col-sm-2 col-sm-2 control-label">Nombre de la Comunidad</label>
+                              <label for="rco_nombre" class="col-sm-2 col-sm-2 control-label">Nombre</label>
                               <div class="col-sm-10">
                                 <input type="text" name="rco_nombre" class="form-control" id="rco_nombre" placeholder="Nombre de la Comunidad" required="" autofocus="" value="<?php echo $row['rco_nombre']; ?>">
                               </div>
                           </div>
                           <div class="form-group">
-                              <label for="rco_direccion" class="col-sm-2 col-sm-2 control-label">Dirección de la Comunidad</label>
+                              <label for="rco_direccion" class="col-sm-2 col-sm-2 control-label">Dirección</label>
                               <div class="col-sm-10">
-                                <input type="text" name="rco_direccion" class="form-control" id="rco_direccion" placeholder="Dirección de la Comunidad" required="" value="<?php echo $row['rco_direccion']; ?>">
+                                <input type="text" name="rco_direccion" class="form-control" id="rco_direccion" placeholder="Dirección" required="" value="<?php echo $row['rco_direccion']; ?>">
                               </div>
                           </div>
                           <div class="form-group">
-                              <label for="rco_contacto" class="col-sm-2 col-sm-2 control-label">Persona de Contacto</label>
+                              <label for="rco_contacto" class="col-sm-2 col-sm-2 control-label">Contacto</label>
                               <div class="col-sm-10">
-                                <input type="text" name="rco_contacto" class="form-control" id="rco_contacto" placeholder="Persona de Contacto" required="" value="<?php echo $row['rco_contacto']; ?>">
+                                <input type="text" name="rco_contacto" class="form-control" id="rco_contacto" placeholder="Contacto" required="" value="<?php echo $row['rco_contacto']; ?>">
                               </div>
                           </div>
                           <div class="form-group">
@@ -47,15 +47,15 @@
                               </div>
                           </div>
                           <div class="form-group">
-                              <label for="rco_correo" class="col-sm-2 col-sm-2 control-label">Correo</label>
+                              <label for="rco_correo" class="col-sm-2 col-sm-2 control-label">E-mail</label>
                               <div class="col-sm-10">
-                                  <input type="email" class="form-control" name="rco_correo" id="rco_correo" placeholder="Correo" required="" maxlength="255" value="<?php echo $row['rco_correo']; ?>">
+                                  <input type="email" class="form-control" name="rco_correo" id="rco_correo" placeholder="E-mail" required="" maxlength="255" value="<?php echo $row['rco_correo']; ?>">
                               </div>
                           </div>
                           <div class="form-group">
-                              <label for="rco_vecinos" class="col-sm-2 col-sm-2 control-label">Número de Vecinos</label>
+                              <label for="rco_vecinos" class="col-sm-2 col-sm-2 control-label">N° Vecinos</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="rco_vecinos" id="rco_vecinos" placeholder="Número de Vecinos" required="" maxlength="255" value="<?php echo $row['rco_vecinos']; ?>">
+                                  <input type="text" class="form-control" name="rco_vecinos" id="rco_vecinos" placeholder="N° Vecinos" required="" maxlength="255" value="<?php echo $row['rco_vecinos']; ?>">
                               </div>
                           </div>   
                           <h4 class="mb"><i class="fa fa-angle-right"></i> Administrador de la Comunidad</h4>                

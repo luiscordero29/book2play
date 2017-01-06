@@ -17,25 +17,23 @@
                       <h4 class="mb"><i class="fa fa-angle-right"></i> Datos de Instalación</h4>
                       <div class="box-body">
                         <dl class="dl-horizontal">
-                          <dt>ID:</dt>
-                          <dd><?php echo $row['rin_id']; ?></dd>
-                          <dt>Nombre de la Propiedad:</dt>
+                          <dt>Nombre:</dt>
                           <dd><?php echo $row['rin_nombre']; ?></dd>
                           <dt>Activo:</dt>
                           <dd><?php echo $row['rin_activo']; ?></dd>
-                          <dt>Número reservas al día por usuario:</dt>
+                          <dt>N° reservas al día/usuario:</dt>
                           <dd><?php echo $row['rin_numero']; ?></dd>
-                          <dt>Tipo:</dt>
+                          <dt>Medida:</dt>
                           <dd><?php echo $row['rin_tipo']; ?></dd>
                           <dt>Duración:</dt>
                           <dd><?php echo $row['rin_duracion']; ?></dd>
                           <dt>Hora Inicio:</dt>
-                          <dd><?php echo $row['rin_hora_inicio']; ?></dd>
+                          <dd><?php echo $this->Instalaciones_model->hora($row['rin_hora_inicio']); ?></dd>
                           <dt>Hora Fin:</dt>
-                          <dd><?php echo $row['rin_hora_fin']; ?></dd>
-                          <dt>Días de Antelación:</dt>
+                          <dd><?php echo $this->Instalaciones_model->hora($row['rin_hora_fin']); ?></dd>
+                          <dt>Días para poder reservar:</dt>
                           <dd><?php echo $row['rin_antelacion']; ?></dd>
-                          <dt>Horas de Anulación:</dt>
+                          <dt>Horas para poder anular:</dt>
                           <dd><?php echo $row['rin_anulacion']; ?></dd>
                         </dl>
                       </div>
@@ -44,18 +42,18 @@
                         <dl class="dl-horizontal">
                           <?php 
                             $horas = $this->Instalaciones_model->res_instalaciones($row['rin_id']);
+                            $item = 0;
                             foreach ($horas as $hora) {
+                              $item++;
                           ?>
-                          <dt>ID: <?php echo $hora['rop_id']; ?></dt>
-                          <dd><?php echo $hora['rop_hora_inicio'] .' - '.$hora['rop_hora_fin']; ?></dd>
+                          <dt>Bloque: <?php echo $item; ?></dt>
+                          <dd><?php echo $this->Instalaciones_model->hora($hora['rop_hora_inicio']) .' - '.$this->Instalaciones_model->hora($hora['rop_hora_fin']); ?></dd>
                           <?php } ?>
                         </dl>
                       </div>
                       <h4 class="mb"><i class="fa fa-angle-right"></i> Datos de la Comunidad</h4>
                       <div class="box-body">
-                        <dl class="dl-horizontal">
-                          <dt>ID:</dt>
-                          <dd><?php echo $row['rco_id']; ?></dd>
+                        <dl class="dl-horizontal">    
                           <dt>Comunidad:</dt>
                           <dd><?php echo $row['rco_nombre']; ?></dd>
                           <dt>Dirección:</dt>
@@ -64,9 +62,9 @@
                           <dd><?php echo $row['rco_contacto']; ?></dd>
                           <dt>Móvil:</dt>
                           <dd><?php echo $row['rco_movil']; ?></dd>
-                          <dt>Correo:</dt>
+                          <dt>E-mail:</dt>
                           <dd><?php echo $row['rco_correo']; ?></dd>
-                          <dt>Número de Vecinos:</dt>
+                          <dt>N° de Vecinos:</dt>
                           <dd><?php echo $row['rco_vecinos']; ?></dd>
                         </dl>
                       </div>
