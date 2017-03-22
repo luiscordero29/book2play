@@ -27,8 +27,7 @@ class Reservas extends CI_Controller {
 		if(!($this->session->userdata('rus_tipo')=='USUARIO'))
    		{     						
 		    //If no session, redirect to login page
-		    redirect('cuenta/salir');
-		    
+		    redirect('cuenta/salir');		    
 		}
 	}
 
@@ -85,7 +84,7 @@ class Reservas extends CI_Controller {
 		$this->form_validation->set_message('check_seleccion_fechas_1', 'Debe escoger un bloque de horario');
 		$this->form_validation->set_message('check_seleccion_fechas_2', 'Ha superado el numero de reservas por día');
 		$this->form_validation->set_message('check_seleccion_fechas_3', 'Error en fecha, debes reservar con de antealción');
-		$this->form_validation->set_message('check_seleccion_fechas_4', 'La fecha de reservación debe ser superior o igual a: '.$this->Reservas_model->check_seleccion_fechas_4_fecha());
+		$this->form_validation->set_message('check_seleccion_fechas_4', 'La fecha de reservación debe ser inferior o igual a: '.$this->Reservas_model->check_seleccion_fechas_4_fecha());
 		$data['res_instalaciones_table'] = $this->Reservas_model->res_instalaciones_table();
 		$data['row'] = $this->Reservas_model->read();
 		$data['hoy'] = $this->Reservas_model->date_to_2($this->input->post('fecha'));

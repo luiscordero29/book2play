@@ -1,0 +1,65 @@
+body { 
+	background: #fff;
+	color: #555;
+	font: normal 15px "Roboto", arial, sans-serif;
+	font-weight: 300;
+	overflow-x: hidden;
+}
+.black-bg {
+    background: #fff;
+    border-bottom: 1px solid #007e06;
+}
+a.logo {
+    font-size: 20px;
+    color: #ffffff;
+    float: left;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+a.logo img {
+    height: 50px;
+}
+.sidebar-toggle-box .fa-bars {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    color: #fff;
+}
+.top-menu .nav > li > a {
+    color: #aeaeae;
+	background-color: #eee;
+}
+a.logo b {
+    font-weight: 400;
+    font-family: "Roboto", arial, sans-serif;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 300;
+    font-family: "Roboto", arial, sans-serif;
+}	
+.form-panel {
+	margin: 0px;
+}
+.seven-cols .form-panel {
+	margin: 0px;
+	padding: 0px;
+	font-size: 10px;
+    text-align: center;
+}
+.seven-cols .form-panel .btn-xs, 
+.seven-cols .form-panel .btn-group-xs > .btn {
+    font-size: 9px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #00b408;
+    border-color: #008c06;
+}
+.form-horizontal.style-form .form-group {
+    border-bottom: transparent 0px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+h4, .h4 {
+    font-size: 16px;
+}

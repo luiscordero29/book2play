@@ -38,7 +38,7 @@
                           <div class="form-group">
                               <label for="rus_correo" class="col-sm-2 col-sm-2 control-label">Correo</label>
                               <div class="col-sm-10">
-                                  <input type="email" class="form-control" name="rus_correo" id="rus_correo" placeholder="Correo" required="" maxlength="255" value="<?php echo set_value('rus_usuario'); ?>">
+                                  <input type="email" class="form-control" name="rus_correo" id="rus_correo" placeholder="Correo" required="" maxlength="255" value="<?php echo set_value('rus_correo'); ?>">
                               </div>
                           </div>
                           <div class="form-group">

@@ -1,5 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <?php $this->load->view($this->controller.'/template/header'); ?>
+  <div class="login-logo">
+    <img src="<?php echo base_url(); ?>/assets/img/logo.png">
+  </div>
   <div id="login-page">
       <div class="container">
           
@@ -19,7 +22,7 @@
                         <a href="<?php echo site_url($this->controller.'/restaurar') ?>"> Restaurar Clave.</a>
                     </span>
                 </label>
-                <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> ENTRAR</button>                
+                <button class="btn btn-default btn-block" type="submit"><i class="fa fa-lock"></i> ENTRAR</button>                
             </div>
     
           <?php echo form_close(); ?>  

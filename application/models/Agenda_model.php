@@ -10,13 +10,13 @@ Class Agenda_model extends CI_MODEL
 	{
 		$rco_id = $this->rco_id();
 		$rcl_id = $this->rcl_id();
-
+		$hoy = date("Y-m-d");
 	    $sql = 
 	    "SELECT * FROM res_reservas r
 	     LEFT JOIN res_opciones o ON o.rop_id = r.rop_id
 	     LEFT JOIN res_instalaciones i ON i.rin_id = o.rin_id
 	     LEFT JOIN res_comunidades c ON c.rco_id = i.rco_id
-	     WHERE (c.rco_id = ".$rco_id.") AND (r.rcl_id = ".$rcl_id.") AND (
+	     WHERE (r.rre_fecha >= date('".$hoy."')) AND (c.rco_id = ".$rco_id.") AND (r.rcl_id = ".$rcl_id.") AND (
 	     	rin_nombre LIKE '%".$search."%' ESCAPE '!' 
 	     	OR rin_activo LIKE '%".$search."%' ESCAPE '!'
 	     	OR rin_numero LIKE '%".$search."%' ESCAPE '!' 
@@ -156,4 +156,5 @@ Class Agenda_model extends CI_MODEL
         $date    = date(implode('-', $date_array));
 		return $date;
 	}
+
 }

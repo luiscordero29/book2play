@@ -119,11 +119,10 @@ Class Reservas_model extends CI_MODEL
 	function cliente($rop_id)
 	{
 		
-	    $this->db->where('rop_id', $rop_id);
+	    $this->db->where('reservas.rop_id', $rop_id);
 	    $this->db->join('clientes','clientes.rcl_id=reservas.rcl_id','left');
 		$query = $this->db->get('reservas');
 	    $data = $query->row_array();
-
 	    return $data['rcl_apellidos'] .' '.$data['rcl_nombres'];
 	    
 	}
@@ -164,6 +163,7 @@ Class Reservas_model extends CI_MODEL
 
 	function check_seleccion_fechas_2()
 	{
+		$rin_id = $this->input->post('rin_id');
 		$rop_id = $this->input->post('rop_id');
 		$rin_numero = $this->input->post('rin_numero');
 		$rop_fecha = $this->input->post('hoy');
@@ -176,13 +176,13 @@ Class Reservas_model extends CI_MODEL
 			$date_array = explode('/',$rop_fecha);
 			$date_array = array_reverse($date_array);		
 			$rop_fecha 	= date(implode('-', $date_array));
-			
-			$item = 1;
 
-		    $this->db->where('rre_fecha', $rop_fecha);
-		    $this->db->where('rcl_id', $rcl_id);
+		    $this->db->where('reservas.rre_fecha', $rop_fecha);
+		    $this->db->where('reservas.rcl_id', $rcl_id);
+		    $this->db->where('opciones.rin_id', $rin_id);
+		    $this->db->join('opciones','opciones.rop_id=reservas.rop_id','left');
 			$query = $this->db->get('reservas');
-		    $item = $item + $query->num_rows();
+		    $item = $query->num_rows();
 
 			if ($item <= $rin_numero) {
 				return true;
@@ -212,16 +212,19 @@ Class Reservas_model extends CI_MODEL
 		$row = $this->read_get($rin_id);
 		$date = date('Y-m-d');
 
-		$date = new DateTime($date);
-        $date->modify('+'.$row['rin_antelacion'].' day');
-        $date = $date->format('Y-m-d');
+		if ($row) {
+			$date = new DateTime($date);
+	        $date->modify('+'.$row['rin_antelacion'].' day');
+	        $date = $date->format('Y-m-d');
+		}
 
-		if (date($hoy) >= date($date)) {
+		if (date($hoy) <= date($date)) {
 			return true;
 		}else{
 			return false;
 		}
 	}
+
 
 	function check_seleccion_fechas_4_fecha()
 	{
@@ -230,11 +233,44 @@ Class Reservas_model extends CI_MODEL
 		$row = $this->read_get($rin_id);
 		
 		$date = date('Y-m-d');
-		$date = new DateTime($date);
-        $date->modify('+'.$row['rin_antelacion'].' day');
-        $date = $date->format('d/m/Y');
+		
+		if ($row) {
+			$date = new DateTime($date);
+	        $date->modify('+'.$row['rin_antelacion'].' day');
+	        $date = $date->format('d/m/Y');
+	    }
 		
 		return $date;
+	}
+
+	function disponibilidad_fechas($hoy,$rin_id,$rop_hora_inicio)
+	{		
+		$row = $this->read_get($rin_id);
+		$date = date('Y-m-d');
+		$date_hoy = date('Y-m-d');
+		$time = date('H:i:s');	
+
+		if ($row) {
+			$date = new DateTime($date);
+	        $date->modify('+'.$row['rin_antelacion'].' day');
+	        $date = $date->format('Y-m-d');
+		}
+
+		if ( (date($hoy) <= date($date)) and (date($hoy) >= date($date_hoy)) ) {
+			$date = date('Y-m-d');
+			if (date($hoy) <> date($date)) {				
+				return true;
+			}else{
+				# se verifica si esta disponible para reservar
+				if (date($time) <= date($rop_hora_inicio)) {
+					return true;
+				}else{
+					return false;
+				}
+			}
+		}else{
+			return false;
+		}
 	}
 
 	function res_instalaciones_table()

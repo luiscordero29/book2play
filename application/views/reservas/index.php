@@ -9,7 +9,7 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Reservas - [Reservar]</h3>
+            <h3><i class="fa fa-angle-right"></i> Reservas</h3>
 
             <div class="row mt">
               <div class="col-lg-12">
@@ -24,8 +24,9 @@
                         $at = array('class' => 'form-horizontal style-form');
                         echo form_open('reservas/index',$at); 
                       ?>
-                          <h4 class="mb"><i class="fa fa-angle-right"></i> Consultar Disponibilidad</h4>
+
                           <div class="form-group">
+
                               <label for="rin_id" class="col-sm-2 col-sm-2 control-label">Elegir Instalacion</label>
                               <div class="col-sm-4">
                                 <select name="rin_id" id="rin_id" class="form-control" required="">
@@ -60,6 +61,7 @@
                     $at = array('class' => 'form-horizontal style-form', 'id' => 'FormReservar');
                     echo form_open('reservas/reservar_listar',$at); 
                   ?>
+                  <input type="hidden" name="rin_id" value="<?php echo $rin_id; ?>">
                   <input type="hidden" name="rco_id" value="<?php echo $rco_id; ?>">
                   <input type="hidden" name="rin_numero" value="<?php echo $rin_numero; ?>">
                   <input type="hidden" name="fecha" value="<?php echo $this->Reservas_model->date_to_1($hoy); ?>">
@@ -81,7 +83,11 @@
                           if ($this->Reservas_model->disponible($hora['rop_id'], $hoy )) {
                       ?>
                           <?php echo $this->Reservas_model->hora($hora['rop_hora_inicio']) .' - '.$this->Reservas_model->hora($hora['rop_hora_fin']); ?> 
+                          <?php if ($this->Reservas_model->disponibilidad_fechas($hoy,$rin_id,$hora['rop_hora_inicio'])): ?>                            
                           <button id="reservar_action" class="btn btn-success btn-xs" data-rop_id="<?php echo $hora['rop_id']; ?>" data-hoy="<?php echo $hoy; ?>" data-info="<?php echo 'Reservar el horario '.$this->Reservas_model->hora($hora['rop_hora_inicio']) .' - '.$this->Reservas_model->hora($hora['rop_hora_fin']).' de '.$this->Reservas_model->date_to_1($hoy); ?>" data-toggle="modal" data-target="#reservar_modal">RESERVAR</button>
+                          <?php else: ?>
+                          <button class="btn btn-default btn-xs">NO DISPONIBLE</button>
+                          <?php endif ?>
                           <hr>
                           <?php }else{  ?>  
                           <?php echo $this->Reservas_model->hora($hora['rop_hora_inicio']) .' - '.$this->Reservas_model->hora($hora['rop_hora_fin']); ?> 

@@ -1,0 +1,38 @@
+body { 
+	background: #fff;
+	color: #555;
+	font: normal 15px "Roboto", arial, sans-serif;
+	font-weight: 300;
+	overflow-x: hidden;
+}
+.form-login h2.form-login-heading
+{
+	
+	background: #f9f9f9;
+	color: #aeaeae;
+}
+.form-login {
+	box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+}
+.btn-default {
+    color: #555;
+    background-color: #fff;
+    border-color: #aeaeae;
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+    color: #555;
+    background-color: #f9f9f9;
+    border-color: #aeaeae;
+}
+.pull-right a {
+	color: #00b408;
+}
+.login-logo {
+	text-align: center;
+	align-content: center;
+	padding-top: 60px;
+	padding-bottom: 0px; 
+}
+.form-login {
+    margin-top: 30px;
+}

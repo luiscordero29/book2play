@@ -102,7 +102,7 @@ Class Clientes_model extends CI_MODEL
 		$this->db->insert('usuarios', $data); 
 
 		$rus_id = $this->db->insert_id();
-		$rco_id = rco_id();
+		$rco_id = $this->rco_id();
 
 		$rcl_dni 		= $this->input->post('rcl_dni');
 	   	$rcl_apellidos 	= $this->input->post('rcl_apellidos');
@@ -178,7 +178,7 @@ Class Clientes_model extends CI_MODEL
 	      	$this->db->where('rus_id', $rus_id);
 			$this->db->update('usuarios', $data); 
 
-			$rco_id = rco_id();
+			$rco_id = $this->rco_id();
 
 			$rcl_dni 		= $this->input->post('rcl_dni');
 		   	$rcl_apellidos 	= $this->input->post('rcl_apellidos');

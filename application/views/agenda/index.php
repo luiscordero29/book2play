@@ -56,13 +56,13 @@
                                   ?>                                                 
                                 </td>
                                 <td>
-                                  <b>Nombre de la Propiedad:</b>
+                                  <b>Nombre:</b>
                                   <?php echo $r['rin_nombre']; ?><br />
                                   <b>Activo:</b>
                                   <?php echo $r['rin_activo']; ?><br />
-                                  <b>Número reservas al día por usuario:</b>
+                                  <b>N° reservas al día/usuario:</b>
                                   <?php echo $r['rin_numero']; ?><br />
-                                  <b>Tipo:</b>
+                                  <b>Medida:</b>
                                   <?php echo $r['rin_tipo']; ?><br />
                                   <b>Duración:</b>
                                   <?php echo $r['rin_duracion']; ?><br />
@@ -70,25 +70,25 @@
                                   <?php echo $this->Agenda_model->hora($r['rin_hora_inicio']); ?><br />
                                   <b>Hora Fin:</b>
                                   <?php echo $this->Agenda_model->hora($r['rin_hora_fin']); ?><br />
-                                  <b>Días de Antelación:</b>
+                                  <b>Días para poder reservar:</b>
                                   <?php echo $r['rin_antelacion']; ?><br />
-                                  <b>Horas de Anulación:</b>
-                                  <?php echo $r['rin_anulacion']; ?><br />                                                             
+                                  <b>Horas para poder anular:</b>
+                                  <?php echo $r['rin_anulacion']; ?><br />                                                        
                                 </td> 
                                 
                                 <td>
-                                  <b>Nombre de la Comunidad:</b>
+                                  <b>Nombre:</b>
                                   <?php echo $r['rco_nombre']; ?><br />
-                                  <b>Dirección de la Comunidad:</b>
+                                  <b>Dirección:</b>
                                   <?php echo $r['rco_direccion']; ?><br />
-                                  <b>Persona de Contacto:</b>
+                                  <b>Contacto:</b>
                                   <?php echo $r['rco_contacto']; ?><br />
                                   <b>Móvil:</b>
                                   <?php echo $r['rco_movil']; ?><br />
-                                  <b>Correo:</b>
+                                  <b>E-mail:</b>
                                   <?php echo $r['rco_correo']; ?><br />
-                                  <b>Número de Vecinos:</b>
-                                  <?php echo $r['rco_vecinos']; ?><br />                                    
+                                  <b>N° Vecinos:</b>
+                                  <?php echo $r['rco_vecinos']; ?><br />                                   
                                 </td>
                                 <td>
                                   
