@@ -79,14 +79,17 @@
                           foreach ($horas as $hora) {
                             if ($this->Reservas_model->disponible($hora['rop_id'], $this->Reservas_model->date_to_2($hoy) )) {
                         ?>
+                            <div class="hora">                         
                             <?php echo $this->Reservas_model->hora($hora['rop_hora_inicio']) .' - '.$this->Reservas_model->hora($hora['rop_hora_fin']); ?> 
                             <?php if ($this->Reservas_model->disponibilidad_fechas($hoy,$row['rin_id'],$hora['rop_hora_inicio'])): ?>                            
                             <button id="reservar_action" class="btn btn-success btn-xs" data-rop_id="<?php echo $hora['rop_id']; ?>" data-hoy="<?php echo $hoy; ?>" data-info="<?php echo 'Reservar el horario '.$this->Reservas_model->hora($hora['rop_hora_inicio']) .' - '.$this->Reservas_model->hora($hora['rop_hora_fin']).' de '.$this->Reservas_model->date_to_1($hoy); ?>" data-toggle="modal" data-target="#reservar_modal">RESERVAR</button>
                             <?php else: ?>
                             <button class="btn btn-default btn-xs">NO DISPONIBLE</button>
                             <?php endif ?>
+                            </div>
                             <hr>
-                            <?php }else{  ?>  
+                            <?php }else{  ?> 
+                            <div class="hora">                       
                             <?php echo $this->Reservas_model->hora($hora['rop_hora_inicio']) .' - '.$this->Reservas_model->hora($hora['rop_hora_fin']); ?> 
                             <?php if ($this->Reservas_model->disponible_usuario($hora['rop_id'], $hoy )): ?>
                             <button class="btn btn-info btn-xs">OCUPADO</button><br />
@@ -94,6 +97,7 @@
                             <button class="btn btn-danger btn-xs">OCUPADO</button><br />
                             <?php endif ?>
                             <?php echo $this->Reservas_model->cliente($hora['rop_id']); ?>
+                            </div>
                             <hr>
                         <?php 
                           }} 

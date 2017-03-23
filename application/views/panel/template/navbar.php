@@ -4,11 +4,11 @@
       *********************************************************************************************************************************************************** -->
       <!--header start-->
       <header class="header black-bg">
-            <?php /* ?>
+            
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
-            */ ?>
+           
             <!--logo start-->
             <a href="<?php echo site_url('panel/index') ?>" class="logo">
               <img src="<?php echo base_url(); ?>/assets/img/logo.png">
@@ -16,7 +16,7 @@
             <!--logo end-->
             <div class="top-menu">
               <ul class="nav navbar-nav navbar-right">
-                <li><?php echo date('Y-m-d H:i:s'); ?></li>
+                
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-user fa-2x"></i> CUENTA<b class="caret"></b></a>
                     <ul class="dropdown-menu">

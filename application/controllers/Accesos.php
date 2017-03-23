@@ -48,6 +48,41 @@ class Accesos extends CI_Controller {
 		}
 	}
 
+	public function restaurar()
+	{
+		// rules
+		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|callback_check_mail|callback_check_restaurar');
+		// message
+		$this->form_validation->set_message('check_mail', 'Correo no existe');
+		$this->form_validation->set_message('check_restaurar', 'Su cuenta no fue restaurada');
+		// views
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->load->view($this->controller.'/restaurar');	
+		}else{			
+	        $data['alert']['success'] = 
+			array( 
+				'Cuanta Restaurada',				
+			); 
+			$data['alert']['info'] = 
+			array( 
+				'Se envio una nueva clave a su bandeja de correo',				
+			); 
+			$this->load->view($this->controller.'/restaurar',$data);	
+
+		}
+	}
+
+	public function check_mail()
+	{
+	    return $this->Accesos_model->check_mail();
+	}
+
+	public function check_restaurar()
+	{
+	    return $this->Accesos_model->check_restaurar();
+	}
+
 	public function check_activo()
 	{
 	    return $this->Accesos_model->check_activo();

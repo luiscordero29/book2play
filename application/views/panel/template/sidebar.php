@@ -8,7 +8,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-                    
+                  <?php /* ?>
                   <li class="mt">
                       <a href="<?php echo site_url('panel/index'); ?>">
                           <i class="fa fa-dashboard"></i>
@@ -16,6 +16,7 @@
                       </a>
                   </li>
                   <?php 
+                  */
                   switch ($this->session->userdata('rus_tipo')) {
                     case 'ADMIN_GLOBAL':
                       # Administrador Global
