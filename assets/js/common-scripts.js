@@ -48,6 +48,9 @@ var Script = function () {
         $(window).on('resize', responsiveView);
     });
 
+    $('#sidebar > ul').hide();
+    $("#container").addClass("sidebar-closed");
+    
     $('.fa-bars').click(function () {
         if ($('#sidebar > ul').is(":visible") === true) {
             $('#main-content').css({

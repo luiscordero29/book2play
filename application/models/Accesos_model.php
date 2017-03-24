@@ -26,7 +26,7 @@ Class Accesos_model extends CI_MODEL
 		$config['protocol'] = 'smtp';
 		$config['smtp_host'] = 'mail.book2play.es';
 		$config['smtp_user'] = 'info@book2play.es';
-		$config['smtp_pass'] = '';
+		$config['smtp_pass'] = 'dJgw#x=R&!]p?b)=5q';
 		$config['smtp_port'] = '25';
 		$config['charset'] = 'iso-8859-1';
 		$config['mailtype'] = 'html';

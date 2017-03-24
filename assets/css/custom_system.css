@@ -64,11 +64,17 @@ h4, .h4 {
     font-size: 16px;
 }
 .hora {
-    min-height: 60px;
+    min-height: 35px;
 }
 .sidebar-toggle-box .fa-bars {
     cursor: pointer;
     display: inline-block;
     font-size: 20px;
     color: #050505;
+}
+#sidebar {
+    margin-left: -210px;
+}
+#main-content {
+    margin-left: 0px;
 }
