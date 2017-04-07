@@ -116,10 +116,11 @@ Class Reservas_model extends CI_MODEL
 	    }
 	}
 
-	function cliente($rop_id)
+	function cliente($rop_id , $rre_fecha )
 	{
 		
 	    $this->db->where('reservas.rop_id', $rop_id);
+	    $this->db->where('reservas.rre_fecha', $rre_fecha);
 	    $this->db->join('clientes','clientes.rcl_id=reservas.rcl_id','left');
 		$query = $this->db->get('reservas');
 	    $data = $query->row_array();

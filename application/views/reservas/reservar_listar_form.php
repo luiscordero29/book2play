@@ -96,7 +96,7 @@
                             <?php else: ?>
                             <button class="btn btn-danger btn-xs">OCUPADO</button><br />
                             <?php endif ?>
-                            <?php echo $this->Reservas_model->cliente($hora['rop_id']); ?>
+                            <?php echo $this->Reservas_model->cliente($hora['rop_id'], $hoy); ?>
                             </div>
                             <hr>
                         <?php 

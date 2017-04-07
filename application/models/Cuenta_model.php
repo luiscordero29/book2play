@@ -10,8 +10,8 @@ Class Cuenta_model extends CI_MODEL
 	function read()
 	{			    
 	    $rus_id = $this->session->userdata('rus_id');
-
-	    $query = $this->db->get_where('usuarios', array('rus_id' => $rus_id));	    
+	    $this->db->join('clientes','clientes.rus_id=usuarios.rus_id', 'join');	    
+	    $query = $this->db->get_where('usuarios', array('usuarios.rus_id' => $rus_id));	    
 
 	    if($query->num_rows() > 0)
 	    {	      
