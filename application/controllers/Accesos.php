@@ -51,10 +51,10 @@ class Accesos extends CI_Controller {
 	public function restaurar()
 	{
 		// rules
-		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|callback_check_mail|callback_check_restaurar');
+		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|callback_check_mail');
 		// message
 		$this->form_validation->set_message('check_mail', 'Correo no existe');
-		$this->form_validation->set_message('check_restaurar', 'Su cuenta no fue restaurada');
+		//$this->form_validation->set_message('check_restaurar', 'Su cuenta no fue restaurada');
 		// views
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -62,14 +62,14 @@ class Accesos extends CI_Controller {
 		}else{			
 	        $data['alert']['success'] = 
 			array( 
-				'Cuanta Restaurada',				
+				'Cuenta Restaurada',				
 			); 
 			$data['alert']['info'] = 
 			array( 
 				'Se envio una nueva clave a su bandeja de correo',				
 			); 
+			$this->Accesos_model->restaurar();
 			$this->load->view($this->controller.'/restaurar',$data);	
-
 		}
 	}
 

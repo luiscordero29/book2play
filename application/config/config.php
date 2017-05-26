@@ -25,7 +25,7 @@ date_default_timezone_set('Europe/Madrid');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/Proyectos/reservas/sistema/';
+$config['base_url'] = 'http://book2play.dev/';
 
 /*
 |--------------------------------------------------------------------------

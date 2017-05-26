@@ -62,7 +62,7 @@ class Agenda extends CI_Controller {
 		
 	}
 
-	public function delete($rre_id=false)
+	public function delete($rre_id=false,$fecha=false,$hora=false)
 	{
 
         if($rre_id===FALSE)
@@ -95,6 +95,16 @@ class Agenda extends CI_Controller {
 			$this->load->view($this->controller.'/delete',$data);
 		}			
 			
+	}
+
+	function fechas(){
+		$ahora = date('Y-m-d H:i:s');
+		echo $ahora.'-----';
+		$datetime1 = new DateTime('2017-04-27 19:15:15');
+		$datetime2 = new DateTime($ahora);
+		//echo $datetime2;
+		$interval = $datetime1->diff($datetime2);
+		echo $interval->format('%r%a%h Dias');
 	}
 
 }

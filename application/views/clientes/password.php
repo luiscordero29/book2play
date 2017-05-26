@@ -9,7 +9,7 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Administradores - [Registrar]</h3>
+            <h3><i class="fa fa-angle-right"></i> Usuarios - [Cambiar Clave]</h3>
             <div class="row mt">
               <div class="col-lg-12">
 
@@ -23,36 +23,22 @@
                         echo form_open('',$at); 
                       ?>
                           <div class="form-group">
-                              <label for="rus_usuario" class="col-sm-2 col-sm-2 control-label">Usuario</label>
+                              <label for="pass" class="col-sm-2 col-sm-2 control-label">Nueva Clave</label>
                               <div class="col-sm-10">
-                                <input type="text" name="rus_usuario" class="form-control" id="rus_usuario" placeholder="Usuario" required="" autofocus="">
+                                <input type="password" name="pass" class="form-control" id="pass" required="" autofocus="">
                               </div>
                           </div>
                           <div class="form-group">
-                              <label for="rus_clave" class="col-sm-2 col-sm-2 control-label">Clave</label>
+                              <label for="veryfi" class="col-sm-2 col-sm-2 control-label">Confirmar Clave</label>
                               <div class="col-sm-10">
-                                <input type="password" name="rus_clave" class="form-control" id="rus_clave" placeholder="Clave" required="">
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label for="rus_correo" class="col-sm-2 col-sm-2 control-label">Correo</label>
-                              <div class="col-sm-10">
-                                  <input type="email" class="form-control" name="rus_correo" id="Correo" placeholder="Correo" required="" maxlength="255"  >
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label for="rus_activo" class="col-sm-2 col-sm-2 control-label">Activo</label>
-                              <div class="col-sm-10">
-                                  <select name="rus_activo" id="rus_activo" class="form-control" required>
-                                    <option value="">SELECCIONE</option>
-                                    <option value="SI">SI</option>
-                                    <option value="NO">NO</option>
-                                  </select>      
+                                  <input type="password" class="form-control" name="veryfi" id="veryfi" required=""  >
                               </div>
                           </div>
                           <div class="form-group">
                               <div class="col-lg-12">
-                                <input type="hidden" name="rus_tipo" value="ADMIN_GLOBAL">
+                                <input type="hidden" name="rus_tipo" value="USUARIO">
+                                <input type="hidden" name="rus_id" value="<?php echo $row['rus_id']; ?>">
+                                <input type="hidden" name="rcl_id" value="<?php echo $row['rcl_id']; ?>">
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                               </div>
                           </div>

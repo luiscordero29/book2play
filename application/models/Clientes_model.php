@@ -214,6 +214,29 @@ Class Clientes_model extends CI_MODEL
 	    }
 	} 
 
+	function password()
+	{
+	    $rus_id 		= $this->input->post('rus_id');
+	    $clave 			= md5($this->input->post('pass'));
+
+	    $data = array(
+			'rus_clave' 	=> $clave  
+		);
+	    
+	    $query = $this->db->get_where('usuarios', array('rus_id' => $rus_id));
+
+	    if($query->num_rows() > 0)
+	    {	      
+	      	$this->db->where('rus_id', $rus_id);
+			$this->db->update('usuarios', $data); 
+	      	return true;
+	    }
+	    else
+	    {
+	      	return false;
+	    }
+	}
+
 	function delete($rus_id)
 	{
 	   

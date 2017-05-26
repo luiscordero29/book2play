@@ -190,6 +190,55 @@ class Clientes extends CI_Controller {
 		}			
 	}
 
+	public function password($rco_id=false)
+	{						
+
+		$this->form_validation->set_rules('pass', 'Contraseña', 'trim|required');
+		$this->form_validation->set_rules('veryfi', 'Confirmar Contraseña', 'trim|required|matches[pass]');
+			
+		if($this->form_validation->run() == FALSE)
+		{
+			$data['row'] = $this->Clientes_model->read($rco_id);
+			if(empty($data['row']))
+			{
+				$data['alert']['danger'] = 
+					array( 
+						'No exite registro ó No puede ser eliminado',				
+					);
+
+				$this->load->view($this->controller.'/message',$data);
+			}else{
+
+				$this->load->view($this->controller.'/password',$data);			
+			
+			}
+		}else{
+				
+			$this->Clientes_model->password();
+			$data['row'] = $this->Clientes_model->read($rco_id);
+
+			if(empty($data['row']))
+			{
+				$data['alert']['danger'] = 
+					array( 
+						'No exite registro ó No puede ser eliminado',				
+					);
+
+				$this->load->view($this->controller.'/message',$data);
+			}else{
+
+				$data['alert']['success'] = 
+					array( 
+						'Se cambio la clave',				
+					);
+
+				$this->load->view($this->controller.'/password',$data);			
+			
+			}
+
+		}			
+	}
+
 	public function delete($rus_id=false)
 	{
 

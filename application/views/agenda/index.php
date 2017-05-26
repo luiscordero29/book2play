@@ -36,7 +36,7 @@
                                   <th>Horario</th>
                                   <th class="numeric">Instalación</th>
                                   <th class="numeric">Comunidad</th>         
-                                  <th>Acciones</th>
+                                  <th>Anular Reserva</th>
                               </tr>
                               </thead>
                               <tbody>
@@ -56,22 +56,7 @@
                                   ?>                                                 
                                 </td>
                                 <td>
-                                  <b>Nombre:</b>
                                   <?php echo $r['rin_nombre']; ?><br />
-                                  <b>Activo:</b>
-                                  <?php echo $r['rin_activo']; ?><br />
-                                  <b>N° reservas al día/usuario:</b>
-                                  <?php echo $r['rin_numero']; ?><br />
-                                  <b>Medida:</b>
-                                  <?php echo $r['rin_tipo']; ?><br />
-                                  <b>Duración:</b>
-                                  <?php echo $r['rin_duracion']; ?><br />
-                                  <b>Hora Inicio:</b>
-                                  <?php echo $this->Agenda_model->hora($r['rin_hora_inicio']); ?><br />
-                                  <b>Hora Fin:</b>
-                                  <?php echo $this->Agenda_model->hora($r['rin_hora_fin']); ?><br />
-                                  <b>Días para poder reservar:</b>
-                                  <?php echo $r['rin_antelacion']; ?><br />
                                   <b>Horas para poder anular:</b>
                                   <?php echo $r['rin_anulacion']; ?><br />                                                        
                                 </td> 
@@ -79,16 +64,8 @@
                                 <td>
                                   <b>Nombre:</b>
                                   <?php echo $r['rco_nombre']; ?><br />
-                                  <b>Dirección:</b>
-                                  <?php echo $r['rco_direccion']; ?><br />
-                                  <b>Contacto:</b>
-                                  <?php echo $r['rco_contacto']; ?><br />
-                                  <b>Móvil:</b>
-                                  <?php echo $r['rco_movil']; ?><br />
                                   <b>E-mail:</b>
-                                  <?php echo $r['rco_correo']; ?><br />
-                                  <b>N° Vecinos:</b>
-                                  <?php echo $r['rco_vecinos']; ?><br />                                   
+                                  <?php echo $r['rco_correo']; ?><br />                                
                                 </td>
                                 <td>
                                   

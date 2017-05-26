@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.3
+-- version 4.6.6
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 10, 2016 at 02:41 PM
--- Server version: 5.7.16-0ubuntu0.16.04.1
--- PHP Version: 7.0.8-0ubuntu0.16.04.3
+-- Host: localhost:3306
+-- Generation Time: May 25, 2017 at 06:15 PM
+-- Server version: 10.0.31-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `2016_reservas`
+-- Database: `book2pla_codeigniter`
 --
 
 -- --------------------------------------------------------
@@ -34,14 +34,6 @@ CREATE TABLE `res_administradores` (
   `rus_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `res_administradores`
---
-
-INSERT INTO `res_administradores` (`rad_id`, `rad_dni`, `rad_apellidos`, `rad_nombres`, `rus_id`) VALUES
-(2, '29131958C', 'apellidos gestor 2', 'nombres gestor 2', 12),
-(3, '25206394G', 'miguel', 'francisco', 13);
-
 -- --------------------------------------------------------
 
 --
@@ -54,6 +46,7 @@ CREATE TABLE `res_clientes` (
   `rcl_nombres` varchar(150) DEFAULT NULL,
   `rcl_apellidos` varchar(150) DEFAULT NULL,
   `rcl_movil` char(30) DEFAULT NULL,
+  `rcl_correo` varchar(250) DEFAULT NULL,
   `rcl_bloque` char(10) DEFAULT NULL,
   `rcl_portal` varchar(250) DEFAULT NULL,
   `rcl_piso` char(10) DEFAULT NULL,
@@ -61,13 +54,6 @@ CREATE TABLE `res_clientes` (
   `rus_id` bigint(20) DEFAULT NULL,
   `rco_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `res_clientes`
---
-
-INSERT INTO `res_clientes` (`rcl_id`, `rcl_dni`, `rcl_nombres`, `rcl_apellidos`, `rcl_movil`, `rcl_bloque`, `rcl_portal`, `rcl_piso`, `rcl_letra`, `rus_id`, `rco_id`) VALUES
-(1, '25454737Q', 'Poncela Laborda', 'Isabel', '04143735483', 'F17', 'LUISCORDERO.COM', '12', 'A', 14, 1);
 
 -- --------------------------------------------------------
 
@@ -85,13 +71,6 @@ CREATE TABLE `res_comunidades` (
   `rco_vecinos` bigint(20) NOT NULL,
   `rus_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `res_comunidades`
---
-
-INSERT INTO `res_comunidades` (`rco_id`, `rco_nombre`, `rco_direccion`, `rco_contacto`, `rco_movil`, `rco_correo`, `rco_vecinos`, `rus_id`) VALUES
-(1, 'simon bolivar', 'asd', 'lasd', '123123123', 'info@asd.com', 12, 13);
 
 -- --------------------------------------------------------
 
@@ -113,14 +92,6 @@ CREATE TABLE `res_instalaciones` (
   `rco_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `res_instalaciones`
---
-
-INSERT INTO `res_instalaciones` (`rin_id`, `rin_nombre`, `rin_activo`, `rin_numero`, `rin_tipo`, `rin_duracion`, `rin_hora_inicio`, `rin_hora_fin`, `rin_antelacion`, `rin_anulacion`, `rco_id`) VALUES
-(9, 'CANCHA DE TENIS', 'NO', 2, 'HORAS', 2, '06:30:00', '18:30:00', 2, 2, 1),
-(10, 'CABALLERIZA', 'SI', 3, 'MINUTOS', 30, '14:00:00', '18:00:00', 1, 2, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -134,26 +105,6 @@ CREATE TABLE `res_opciones` (
   `rin_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `res_opciones`
---
-
-INSERT INTO `res_opciones` (`rop_id`, `rop_hora_inicio`, `rop_hora_fin`, `rin_id`) VALUES
-(8473, '06:30:00', '08:30:00', 9),
-(8474, '08:30:00', '10:30:00', 9),
-(8475, '10:30:00', '12:30:00', 9),
-(8476, '12:30:00', '14:30:00', 9),
-(8477, '14:30:00', '16:30:00', 9),
-(8478, '16:30:00', '18:30:00', 9),
-(8479, '14:00:00', '14:30:00', 10),
-(8480, '14:30:00', '15:00:00', 10),
-(8481, '15:00:00', '15:30:00', 10),
-(8482, '15:30:00', '16:00:00', 10),
-(8483, '16:00:00', '16:30:00', 10),
-(8484, '16:30:00', '17:00:00', 10),
-(8485, '17:00:00', '17:30:00', 10),
-(8486, '17:30:00', '18:00:00', 10);
-
 -- --------------------------------------------------------
 
 --
@@ -166,22 +117,6 @@ CREATE TABLE `res_reservas` (
   `rop_id` bigint(20) DEFAULT NULL,
   `rcl_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `res_reservas`
---
-
-INSERT INTO `res_reservas` (`rre_id`, `rre_fecha`, `rop_id`, `rcl_id`) VALUES
-(16, '2016-12-12', 8479, 1),
-(17, '2017-06-07', 8479, 1),
-(18, '2016-12-12', 8480, 1),
-(19, '2016-12-12', 8481, 1),
-(20, '2016-12-13', 8479, 1),
-(21, '2016-12-11', 8479, 1),
-(22, '2016-12-22', 8480, 1),
-(23, '2016-12-14', 8479, 1),
-(24, '2016-12-13', 8480, 1),
-(25, '2016-12-13', 8481, 1);
 
 -- --------------------------------------------------------
 
@@ -197,22 +132,6 @@ CREATE TABLE `res_usuarios` (
   `rus_correo` varchar(150) DEFAULT NULL,
   `rus_activo` enum('SI','NO') DEFAULT 'NO'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `res_usuarios`
---
-
-INSERT INTO `res_usuarios` (`rus_id`, `rus_tipo`, `rus_usuario`, `rus_clave`, `rus_correo`, `rus_activo`) VALUES
-(1, 'ADMIN_GLOBAL', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@admin.com', 'SI'),
-(4, 'ADMIN_COMUNIDAD', '12640749H', '535951c35042f40fff2d1335673d6630', NULL, 'NO'),
-(5, NULL, '06003864J', '630a2b689fd4ef2c280c63f18ef455cc', 'matilde@gmail.com', 'NO'),
-(6, 'USUARIO', '86750273T', 'eaa79afeb3984858c46ad7a1bd38bff4', 'rosaspri11@hotmail.com', 'NO'),
-(8, 'ADMIN_COMUNIDAD', '04280182C', 'dfb422076631b0c615f3f6ebbe19e130', NULL, 'NO'),
-(9, 'USUARIO', '86084947H', 'f8202d385ab488f4cc45c4445ed660e5', 'luisa@gmail.com', 'NO'),
-(10, 'ADMIN_GLOBAL', 'admin2', 'c84258e9c39059a89ab77d846ddab909', 'info@luiscordero29.com', 'SI'),
-(12, 'ADMIN_COMUNIDAD', 'gestor2', '13f323133114e52cb8534cf096bc50d3', 'gestor2@reservas.com', 'SI'),
-(13, 'ADMIN_COMUNIDAD', 'gestor3', '1d44b3019f0a880296507b1e24c50cd6', 'gestor3@gestor.com', 'SI'),
-(14, 'USUARIO', 'usuario1', '122b738600a0f74f7c331c0ef59bc34c', 'iponcela@yahoo.com', 'SI');
 
 --
 -- Indexes for dumped tables
@@ -279,37 +198,37 @@ ALTER TABLE `res_usuarios`
 -- AUTO_INCREMENT for table `res_administradores`
 --
 ALTER TABLE `res_administradores`
-  MODIFY `rad_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `rad_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `res_clientes`
 --
 ALTER TABLE `res_clientes`
-  MODIFY `rcl_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `rcl_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `res_comunidades`
 --
 ALTER TABLE `res_comunidades`
-  MODIFY `rco_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `rco_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `res_instalaciones`
 --
 ALTER TABLE `res_instalaciones`
-  MODIFY `rin_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `rin_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `res_opciones`
 --
 ALTER TABLE `res_opciones`
-  MODIFY `rop_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8487;
+  MODIFY `rop_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8543;
 --
 -- AUTO_INCREMENT for table `res_reservas`
 --
 ALTER TABLE `res_reservas`
-  MODIFY `rre_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `rre_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 --
 -- AUTO_INCREMENT for table `res_usuarios`
 --
 ALTER TABLE `res_usuarios`
-  MODIFY `rus_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `rus_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- Constraints for dumped tables
 --

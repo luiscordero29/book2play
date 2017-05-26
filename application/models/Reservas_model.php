@@ -18,7 +18,54 @@ Class Reservas_model extends CI_MODEL
 			'rop_id' 	=> $rop_id,
 		);
 		
-		$this->db->insert('reservas', $data);	
+		$this->db->insert('reservas', $data);
+
+	    $query 	= $this->db->get_where('opciones', array('rop_id' => $rop_id));	    
+	    $opcion = $query->row_array();
+		
+		$query 	= $this->db->get_where('instalaciones', array('rin_id' => $opcion['rin_id']));	    
+	    $instalacion = $query->row_array();
+
+	    $query 	= $this->db->get_where('clientes', array('rcl_id' => $rcl_id));	    
+	    $cliente = $query->row_array();
+
+	    $query 	= $this->db->get_where('usuarios', array('rus_id' => $cliente['rus_id']));	    
+	    $usuario = $query->row_array();	
+
+	    $dia 	= $this->date_to_1($rre_fecha);
+	    $hora 	= $this->hora($opcion['rop_hora_inicio']).' - '.$this->hora($opcion['rop_hora_fin']);
+      
+	    /*
+		# ENVIO DE CORREO
+		# REQUERIMIENTOS
+		$this->load->library('email');
+		$this->load->helper('email');
+		#CONFIGURACION
+		$config['protocol'] = 'smtp';
+		$config['useragent'] = 'book2play';
+		$config['priority'] = '1';
+		$config['charset'] = 'utf-8';
+		$config['mailtype'] = 'html';
+		$config['smtp_host'] = '';
+		$config['smtp_user'] = '';
+		$config['smtp_pass'] = '';
+		$config['smtp_port'] = '465';
+		$config['smtp_timeout'] = '5';
+		$config['smtp_keepalive'] = 'true';
+		$config['smtp_crypto'] = 'ssl';
+		$this->email->initialize($config);
+		#ENVIO
+		$text = '<h2>DATOS DE LA RESERVA</h2>';
+		$text .= '<p><b>Instalación:</b> '.$instalacion['rin_nombre'].'</p>';
+		$text .= '<p><b>Día:</b> '.$dia.'</p>';
+		$text .= '<p><b>Hora:</b> '.$hora.'</p>';
+		$this->email->to($usuario['rus_correo']);
+		$this->email->bcc('miguel@webactual.com ');
+		$this->email->from('info@book2play.es');
+		$this->email->subject('REGISTRO DE RESERVA');
+		$this->email->message($text);
+		$this->email->send();
+		*/	
 		
 		return true;
 	}
@@ -166,10 +213,11 @@ Class Reservas_model extends CI_MODEL
 	{
 		$rin_id = $this->input->post('rin_id');
 		$rop_id = $this->input->post('rop_id');
-		$rin_numero = $this->input->post('rin_numero');
 		$rop_fecha = $this->input->post('hoy');
 		$rcl_id = $this->rcl_id();
-
+		
+		$row = $this->read_get($rin_id);
+		$rin_numero = $row['rin_numero'];
 		if (empty($rop_id)) {
 			return false;
 		}else{
@@ -180,12 +228,13 @@ Class Reservas_model extends CI_MODEL
 
 		    $this->db->where('reservas.rre_fecha', $rop_fecha);
 		    $this->db->where('reservas.rcl_id', $rcl_id);
+		    $this->db->where('reservas.rcl_id', $rcl_id);
 		    $this->db->where('opciones.rin_id', $rin_id);
 		    $this->db->join('opciones','opciones.rop_id=reservas.rop_id','left');
 			$query = $this->db->get('reservas');
 		    $item = $query->num_rows();
 
-			if ($item <= $rin_numero) {
+			if ($item < $rin_numero) {
 				return true;
 			}else{
 				return false;

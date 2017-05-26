@@ -6,7 +6,7 @@ Class Accesos_model extends CI_MODEL
 		parent::__construct();
 	}
 
-	public function check_restaurar()
+	public function restaurar()
  	{
 	    $rus_correo = $this->input->post('email');
 	    $query = $this->db->get_where('usuarios', array('rus_correo' => $rus_correo));
@@ -21,25 +21,29 @@ Class Accesos_model extends CI_MODEL
 		$this->db->update('usuarios', $data);
 
 		# ENVIO DE CORREO
+		# REQUERIMIENTOS
 		$this->load->library('email');
 		$this->load->helper('email');
+		#CONFIGURACION
 		$config['protocol'] = 'smtp';
-		$config['smtp_host'] = 'mail.book2play.es';
-		$config['smtp_user'] = 'info@book2play.es';
-		$config['smtp_pass'] = 'dJgw#x=R&!]p?b)=5q';
-		$config['smtp_port'] = '25';
-		$config['charset'] = 'iso-8859-1';
+		$config['useragent'] = 'book2play';
+		$config['priority'] = '1';
+		$config['charset'] = 'utf-8';
 		$config['mailtype'] = 'html';
+		$config['smtp_host'] = '';
+		$config['smtp_user'] = '';
+		$config['smtp_pass'] = '';
+		$config['smtp_port'] = '465';
+		$config['smtp_timeout'] = '5';
+		$config['smtp_keepalive'] = 'true';
+		$config['smtp_crypto'] = 'ssl';
 		$this->email->initialize($config);
-
-		// sent mail 
+		#ENVIO
 		$text = '<h2>DATOS DE ACCESO</h2>';
 		$text .= '<p><b>USUARIO:</b> '.$row['rus_usuario'].'</p>';
 		$text .= '<p><b>CLAVE:</b> '.$pass.'</p>';
-
 		$this->email->to($rus_correo);
 		$this->email->bcc('miguel@webactual.com ');
-		$this->email->bcc('info@luiscordero29.com ');
 		$this->email->from('info@book2play.es');
 		$this->email->subject('RESTAURAR USUARIO');
 		$this->email->message($text);

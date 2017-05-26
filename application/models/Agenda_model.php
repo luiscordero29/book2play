@@ -85,21 +85,48 @@ Class Agenda_model extends CI_MODEL
 	   	$rco_id = $this->rco_id();
 		$rcl_id = $this->rcl_id();
 
-	   	$query = $this->db->get_where('reservas', array('rre_id' => $rre_id,'rcl_id' => $rcl_id));	
+		$sql = 
+	    "SELECT * FROM res_reservas r
+	     LEFT JOIN res_opciones o ON o.rop_id = r.rop_id
+	     LEFT JOIN res_instalaciones i ON i.rin_id = o.rin_id
+	     LEFT JOIN res_comunidades c ON c.rco_id = i.rco_id
+	     WHERE (r.rre_id = ".$rre_id.") AND (r.rcl_id = ".$rcl_id.")
+	    ";
+
+	    $query = $this->db->query($sql);
+
+	   	///$query = $this->db->get_where('reservas', array('rre_id' => $rre_id,'rcl_id' => $rcl_id));	
 	   	
 	    // eliminar
 	    if($query->num_rows() > 0)
 	    {	      
-	    	$sql = 
-		    "SELECT * FROM res_reservas r
-		     LEFT JOIN res_opciones o ON o.rop_id = r.rop_id
-		     LEFT JOIN res_instalaciones i ON i.rin_id = o.rin_id
-		     LEFT JOIN res_comunidades c ON c.rco_id = i.rco_id
-		     WHERE (c.rco_id = ".$rco_id.") AND (r.rcl_id = ".$rcl_id.") AND (r.rre_id = ".$rre_id.")
-		    ";
-		    $query = $this->db->query($sql);
-		    $data = $query->row_array();
+	    	// comparar fecha 
 
+	    	# operacion
+		    $r = $query->row_array();	    
+		    $ahora = date('Y-m-d H:i:s');
+		    $datetime2 = new DateTime($r['rre_fecha'].' '.$r['rop_hora_inicio']);
+			$datetime1 = new DateTime($ahora);
+			$interval = $datetime1->diff($datetime2);
+			# variables 
+			$dias = $interval->format('%r%a');
+			$horas = $interval->format('%r%h');
+			if ($dias>0) {
+				$total_horas = $dias*24+$horas;
+			}else{
+				$total_horas = $horas;
+			}
+			# eliminar 
+			if ( $total_horas>$r['rin_anulacion'] ) {
+				# code...
+				$this->db->where('rre_id', $rre_id);
+				$this->db->delete('reservas'); 
+		      	return true;
+			}else{
+				return false;
+			}
+
+			/*
 		    $minutos = ceil((strtotime(date('H:i:s')) - strtotime($data['rop_hora_inicio']) / 60));
 
 		    if ($minutos>$data['rin_anulacion']*60) {
@@ -110,7 +137,7 @@ Class Agenda_model extends CI_MODEL
 		      	return true;
 		    }else{
 		    	return false;
-		    }
+		    }*/
 	    }
 	    else
 	    {

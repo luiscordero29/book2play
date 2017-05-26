@@ -89,6 +89,7 @@
                                   <div class="btn-group">
                                     <a title="Visualizar" href="<?php echo site_url($this->controller.'/view/'.$r['rcl_id']); ?>" class="btn btn-default"><i class="fa fa-eye"></i></a>
                                     <a title="Editar" href="<?php echo site_url($this->controller.'/update/'.$r['rcl_id']); ?>" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                    <a title="Cambiar Clave" href="<?php echo site_url($this->controller.'/password/'.$r['rcl_id']); ?>" class="btn btn-success"><i class="fa fa-lock"></i></a>
                                     <a title="Borrar" onclick="return confirm('¿Desea eliminar el registro?')" href="<?php echo site_url($this->controller.'/delete/'.$r['rcl_id']); ?>" class="btn btn-danger"><i class="fa fa-remove"></i></a>
                                   </div>
 
