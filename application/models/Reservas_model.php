@@ -35,37 +35,23 @@ Class Reservas_model extends CI_MODEL
 	    $dia 	= $this->date_to_1($rre_fecha);
 	    $hora 	= $this->hora($opcion['rop_hora_inicio']).' - '.$this->hora($opcion['rop_hora_fin']);
       
-	    /*
+
 		# ENVIO DE CORREO
 		# REQUERIMIENTOS
 		$this->load->library('email');
 		$this->load->helper('email');
-		#CONFIGURACION
-		$config['protocol'] = 'smtp';
-		$config['useragent'] = 'book2play';
-		$config['priority'] = '1';
-		$config['charset'] = 'utf-8';
-		$config['mailtype'] = 'html';
-		$config['smtp_host'] = '';
-		$config['smtp_user'] = '';
-		$config['smtp_pass'] = '';
-		$config['smtp_port'] = '465';
-		$config['smtp_timeout'] = '5';
-		$config['smtp_keepalive'] = 'true';
-		$config['smtp_crypto'] = 'ssl';
-		$this->email->initialize($config);
 		#ENVIO
 		$text = '<h2>DATOS DE LA RESERVA</h2>';
 		$text .= '<p><b>Instalación:</b> '.$instalacion['rin_nombre'].'</p>';
 		$text .= '<p><b>Día:</b> '.$dia.'</p>';
 		$text .= '<p><b>Hora:</b> '.$hora.'</p>';
 		$this->email->to($usuario['rus_correo']);
-		$this->email->bcc('miguel@webactual.com ');
+		$this->email->cc('miguel@webactual.com ');
+		$this->email->cc('info@luiscordero29.com ');
 		$this->email->from('info@book2play.es');
 		$this->email->subject('REGISTRO DE RESERVA');
 		$this->email->message($text);
-		$this->email->send();
-		*/	
+		$this->email->send();	
 		
 		return true;
 	}

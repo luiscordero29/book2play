@@ -126,11 +126,11 @@ class Comunidades extends CI_Controller {
 		$this->form_validation->set_rules('rco_vecinos', 'Número de Vecinos', 'trim|required');
 		$this->form_validation->set_rules('rus_id', 'Gestor', 'trim|required|integer');
 			
-
+		
 		if($this->form_validation->run() == FALSE)
 		{
-			$data['res_administradores'] = $this->Comunidades_model->res_administradores();
 			$data['row'] = $this->Comunidades_model->read($rco_id);
+			$data['res_administradores'] = $this->Comunidades_model->res_administradores();
 			if(empty($data['row']))
 			{
 				$data['alert']['danger'] = 

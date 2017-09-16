@@ -9,7 +9,14 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Usuarios</h3>
+            <div class="row">
+              <div class="col-md-9">
+                <h3><i class="fa fa-angle-right"></i> Usuarios</h3>
+              </div>
+              <div class="col-md-3" style="text-align: right; padding-top: 15px;">
+                <a href="<?php echo site_url('panel/index'); ?>" class="btn btn-info">Volver</a>
+              </div>
+            </div>
             <div class="row mt">
               <div class="col-lg-12">
               
@@ -46,7 +53,7 @@
                               <tr>
                                 <td>
                                   <b>Usuario:</b>
-                                  <?php echo $r['rus_usuario']; ?><br />
+                                  <?php echo $r['rcl_dni']; ?><br />
                                   <b>Correo:</b>
                                   <?php echo $r['rus_correo']; ?><br />
                                   <b>Activo:</b>

@@ -9,7 +9,14 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Usuarios - [Editar]</h3>
+            <div class="row">
+              <div class="col-md-9">
+                <h3><i class="fa fa-angle-right"></i> Usuarios - [Editar]</h3>
+              </div>
+              <div class="col-md-3" style="text-align: right; padding-top: 15px;">
+                <a href="<?php echo site_url('clientes/index'); ?>" class="btn btn-info">Volver</a>
+              </div>
+            </div>
             <div class="row mt">
               <div class="col-lg-12">
 
@@ -23,21 +30,15 @@
                         echo form_open('',$at); 
                       ?>
                           <div class="form-group">
-                              <label for="rus_usuario" class="col-sm-2 col-sm-2 control-label">Usuario</label>
+                              <label for="rus_correo" class="col-sm-2 col-sm-2 control-label">Correo</label>
                               <div class="col-sm-10">
-                                <input type="text" name="rus_usuario" class="form-control" id="rus_usuario" placeholder="Usuario" value="<?php echo $row['rus_usuario']; ?>" required="" autofocus="">
+                                  <input type="email" class="form-control" name="rus_correo" id="rus_correo" placeholder="Correo" value="<?php echo $row['rus_correo']; ?>" required="" maxlength="255"  >
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="rus_clave" class="col-sm-2 col-sm-2 control-label">Clave</label>
                               <div class="col-sm-10">
                                 <input type="password" name="rus_clave" class="form-control" id="rus_clave" placeholder="Clave" required="">
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label for="rus_correo" class="col-sm-2 col-sm-2 control-label">Correo</label>
-                              <div class="col-sm-10">
-                                  <input type="email" class="form-control" name="rus_correo" id="rus_correo" placeholder="Correo" value="<?php echo $row['rus_correo']; ?>" required="" maxlength="255"  >
                               </div>
                           </div>
                           <div class="form-group">

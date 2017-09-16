@@ -9,25 +9,34 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Instalaciones</h3>
+            <div class="row">
+              <div class="col-md-9">
+                <h3><i class="fa fa-angle-right"></i> Instalaciones</h3>
+              </div>
+              <div class="col-md-3" style="text-align: right; padding-top: 15px;">
+                <a href="<?php echo site_url('panel/index'); ?>" class="btn btn-info">Volver</a>
+              </div>
+            </div>
             <div class="row mt">
               <div class="col-lg-12">
               
                   <div class="content-panel">
-                      <h4>
-                        <?php 
-                        $at = array('class' => 'form-inline', 'role' => 'form');
-                        echo form_open('',$at); 
-                        ?>                        
-                          <div class="form-group">
-                              <label class="sr-only" for="s"></label>                            
-                              <input type="text" name="s" class="form-control" value="<?php echo $search; ?>">
-                          </div>
-                          <button type="submit" class="btn btn-theme">BUSCAR</button>
-                        <?php 
-                        echo form_close(); 
-                        ?>
-                      </h4>
+                      
+                        <h4>
+                          <?php 
+                          $at = array('class' => 'form-inline', 'role' => 'form');
+                          echo form_open('',$at); 
+                          ?>                        
+                            <div class="form-group">
+                                <label class="sr-only" for="s"></label>                            
+                                <input type="text" name="s" class="form-control" value="<?php echo $search; ?>">
+                            </div>
+                            <button type="submit" class="btn btn-theme">BUSCAR</button>
+                          <?php 
+                          echo form_close(); 
+                          ?>
+                        </h4>
+                      
                           <section id="unseen">
                             <table class="table table-bordered table-striped table-condensed">
                               <thead>

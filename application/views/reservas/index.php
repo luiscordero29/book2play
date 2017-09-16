@@ -32,15 +32,16 @@
                                 <select name="rin_id" id="rin_id" class="form-control" required="">
                                   <option value="">SELECCIONE</option>
                                   <?php 
-                                  foreach ($res_instalaciones_table as $r) {
-                                    if ($r['rin_numero']>1) {
-                                      $text = $r['rin_numero'].' RESERVAS POR DÍA';
-                                    }else{
-                                      $text = $r['rin_numero'].' RESERVA POR DÍA';
-                                    }
+                                  if (!empty($res_instalaciones_table)) {
+                                    foreach ($res_instalaciones_table as $r) {
+                                      if ($r['rin_numero']>1) {
+                                        $text = $r['rin_numero'].' RESERVAS POR DÍA';
+                                      }else{
+                                        $text = $r['rin_numero'].' RESERVA POR DÍA';
+                                      }
                                   ?>
                                   <option <?php if ($r['rin_id']==$rin_id): ?>selected<?php endif; ?> value="<?php echo $r['rin_id']; ?>"><?php echo $r['rin_nombre'].': '.$text; ?></option>
-                                  <?php } ?>
+                                  <?php }} ?>
                                 </select>
                               </div>
                               <label for="fecha" class="col-sm-2 col-sm-2 control-label">Elegir Fecha</label>

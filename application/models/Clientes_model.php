@@ -85,7 +85,7 @@ Class Clientes_model extends CI_MODEL
 	function create()
 	{
 	   
-	   	$rus_usuario 	= $this->input->post('rus_usuario');
+	   	$rus_usuario 	= $this->input->post('rcl_dni');
 	   	$rus_clave 		= MD5($this->input->post('rus_clave'));
 	   	$rus_activo 	= $this->input->post('rus_activo');
 	   	$rus_correo 	= $this->input->post('rus_correo');	 
@@ -161,7 +161,7 @@ Class Clientes_model extends CI_MODEL
 	    if($query->num_rows() > 0)
 	    {	      	      	
 
-	    	$rus_usuario 	= $this->input->post('rus_usuario');
+	    	$rus_usuario 	= $this->input->post('rcl_dni');
 		   	$rus_clave 		= MD5($this->input->post('rus_clave'));
 		   	$rus_activo 	= $this->input->post('rus_activo');
 		   	$rus_correo 	= $this->input->post('rus_correo');	 
@@ -263,7 +263,7 @@ Class Clientes_model extends CI_MODEL
 	function check_usuario()
 	{		
 	    $rus_id 		= $this->input->post('rus_id');
-	    $rus_usuario 	= $this->input->post('rus_usuario');
+	    $rus_usuario 	= $this->input->post('rcl_dni');;
 
 	    $this->db->where('rus_id !=', $rus_id);
 	    $this->db->where('rus_usuario', $rus_usuario);

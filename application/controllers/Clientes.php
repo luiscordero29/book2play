@@ -67,7 +67,7 @@ class Clientes extends CI_Controller {
 	public function create()
 	{          
 			
-		$this->form_validation->set_rules('rus_usuario', 'Usuario', 'trim|required|is_unique[usuarios.rus_usuario]|min_length[6]|max_length[15]|alpha_numeric');
+		//$this->form_validation->set_rules('rus_usuario', 'Usuario', 'trim|required|is_unique[usuarios.rus_usuario]|min_length[6]|max_length[15]|alpha_numeric');
 		$this->form_validation->set_rules('rus_clave', 'Clave', 'required');
 		$this->form_validation->set_rules('rus_correo', 'Correo', 'trim|valid_email|is_unique[usuarios.rus_correo]');		
 		$this->form_validation->set_rules('rus_activo', 'Activo', 'required');
@@ -128,7 +128,7 @@ class Clientes extends CI_Controller {
 	public function update($rco_id=false)
 	{			
 			
-		$this->form_validation->set_rules('rus_usuario', 'Usuario', 'trim|required|min_length[6]|max_length[15]|alpha_numeric|callback_check_usuario');
+		//$this->form_validation->set_rules('rus_usuario', 'Usuario', 'trim|required|min_length[6]|max_length[15]|alpha_numeric|callback_check_usuario');
 		$this->form_validation->set_rules('rus_clave', 'Clave', 'required');
 		$this->form_validation->set_rules('rus_activo', 'Activo', 'required');
 		$this->form_validation->set_rules('rus_correo', 'Correo', 'trim|valid_email|callback_check_correo');					

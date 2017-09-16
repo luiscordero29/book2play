@@ -24,20 +24,6 @@ Class Accesos_model extends CI_MODEL
 		# REQUERIMIENTOS
 		$this->load->library('email');
 		$this->load->helper('email');
-		#CONFIGURACION
-		$config['protocol'] = 'smtp';
-		$config['useragent'] = 'book2play';
-		$config['priority'] = '1';
-		$config['charset'] = 'utf-8';
-		$config['mailtype'] = 'html';
-		$config['smtp_host'] = '';
-		$config['smtp_user'] = '';
-		$config['smtp_pass'] = '';
-		$config['smtp_port'] = '465';
-		$config['smtp_timeout'] = '5';
-		$config['smtp_keepalive'] = 'true';
-		$config['smtp_crypto'] = 'ssl';
-		$this->email->initialize($config);
 		#ENVIO
 		$text = '<h2>DATOS DE ACCESO</h2>';
 		$text .= '<p><b>USUARIO:</b> '.$row['rus_usuario'].'</p>';

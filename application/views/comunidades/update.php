@@ -9,7 +9,14 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Comunidades - [Editar]</h3>
+            <div class="row">
+              <div class="col-md-9">
+                <h3><i class="fa fa-angle-right"></i> Comunidades - [Editar]</h3>
+              </div>
+              <div class="col-md-3" style="text-align: right; padding-top: 15px;">
+                <a href="<?php echo site_url('comunidades/index'); ?>" class="btn btn-info">Volver</a>
+              </div>
+            </div>
             <div class="row mt">
               <div class="col-lg-12">
 
@@ -63,10 +70,12 @@
                               <label for="rus_id" class="col-sm-2 col-sm-2 control-label">Gestor</label>
                               <div class="col-sm-10">
                                   <select name="rus_id" id="rus_id" class="form-control" required>
-                                    <option value="<?php echo $row['rus_id']; ?>"><?php echo $row['rad_dni'].' '.$row['rad_apellidos'].' '.$row['rad_nombres']; ?></option>
+                                    <option value="<?php echo $row['rus_id']; ?>"><?php echo $row['rad_dni'].'-'.$row['rad_apellidos'].' '.$row['rad_nombres']; ?></option>
                                     <?php 
-                                      foreach ($res_administradores as $gestor) {
-                                        echo '<option value="'.$gestor['rus_id'].'">'.$gestor['rad_dni'].' '.$gestor['rad_apellidos'].' '.$gestor['rad_nombres'].'</option>';
+                                      if (!empty($res_administradores)) {
+                                        foreach ($res_administradores as $gestor) {
+                                          echo '<option value="'.$gestor['rus_id'].'">'.$gestor['rad_dni'].'-'.$gestor['rad_apellidos'].' '.$gestor['rad_nombres'].'</option>';
+                                        }
                                       }
                                     ?>
                                   </select>      

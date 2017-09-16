@@ -9,7 +9,14 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Usuarios - [Ver]</h3>
+            <div class="row">
+              <div class="col-md-9">
+                <h3><i class="fa fa-angle-right"></i> Usuarios - [Ver]</h3>
+              </div>
+              <div class="col-md-3" style="text-align: right; padding-top: 15px;">
+                <a href="<?php echo site_url('clientes/index'); ?>" class="btn btn-info">Volver</a>
+              </div>
+            </div>
             <div class="row mt">
               <div class="col-lg-12">
 
@@ -18,7 +25,7 @@
                       <div class="box-body">
                         <dl class="dl-horizontal">
                           <dt>Usuario:</dt>
-                          <dd><?php echo $row['rus_usuario']; ?></dd>
+                          <dd><?php echo $row['rcl_dni']; ?></dd>
                           <dt>Correo:</dt>
                           <dd><?php echo $row['rus_correo']; ?></dd>
                           <dt>Tipo:</dt>
