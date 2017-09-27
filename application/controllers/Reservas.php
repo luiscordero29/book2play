@@ -42,12 +42,18 @@ class Reservas extends CI_Controller {
 		
 		if($this->form_validation->run() == FALSE)
 		{
-			# Seleccionar el Primer Registro 
-			foreach ($data['res_instalaciones_table'] as $instalacion) {
-				$data['rin_id'] = $instalacion['rin_id'];
-				$data['rin_numero'] = $instalacion['rin_numero'];
-				$data['rco_id'] = $instalacion['rco_id'];
-				break;
+			#Validar el primer Registro 
+			if (!empty($res_instalaciones_table)) {
+				# Seleccionar el Primer Registro 
+				foreach ($data['res_instalaciones_table'] as $instalacion) {
+					$data['rin_id'] = $instalacion['rin_id'];
+					$data['rin_numero'] = $instalacion['rin_numero'];
+					$data['rco_id'] = $instalacion['rco_id'];
+					break;
+				}
+			}else{
+				# Redireccionar 
+				redirect('reservas/error_instalaciones');	
 			}
 			# Indicar Fecha Actual
 			$data['hoy'] = date("Y-m-d");
@@ -136,6 +142,14 @@ class Reservas extends CI_Controller {
 			}
 
 		}			
+	}
+
+	public function error_instalaciones(){
+		$data['alert']['danger'] = 
+			array( 
+				'No exite ninguna instalación para realizar reservaciones',				
+			);
+		$this->load->view($this->controller.'/message',$data);			
 	}
 
 	public function check_fecha()
